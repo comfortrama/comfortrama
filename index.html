@@ -31,49 +31,96 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Hero Reviews Panel */
+    /* Hero Reviews Panel — white card style */
     .hero-reviews {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: #fff;
       border-radius: 16px;
-      padding: 1.25rem;
-      backdrop-filter: blur(8px);
+      padding: 1rem 1rem .5rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.22);
       height: 420px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      width: 100%;
     }
-    .reviews-header { margin-bottom: 1rem; }
-    .reviews-rating { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
-    .rating-num { font-size: 2rem; font-weight: 800; color: white; line-height: 1; }
-    .reviews-rating .stars { color: #fbbf24; font-size: 1.1rem; display: flex; gap: 2px; }
-    .reviews-source { font-size: .8rem; color: rgba(255,255,255,.7); display: flex; align-items: center; }
-    .reviews-scroll {
+    .reviews-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: .75rem;
+      flex-shrink: 0;
+    }
+    .reviews-glogo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .reviews-glogo svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .reviews-glogo span { font-size: .85rem; font-weight: 600; color: #444; }
+    .reviews-aggregate {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .reviews-aggregate .agg-num { font-size: 1.4rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
+    .reviews-aggregate .agg-stars { color: #f5a623; font-size: .9rem; display: flex; gap: 1px; }
+    .reviews-aggregate .agg-count { font-size: .75rem; color: #888; }
+
+    .reviews-scroll-wrap {
       flex: 1;
-      overflow: hidden;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      position: relative;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .reviews-scroll-wrap::-webkit-scrollbar { display: none; }
+    .reviews-scroll-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 48px;
+      background: linear-gradient(transparent, white);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .reviews-track {
       display: flex;
       flex-direction: column;
-      gap: .75rem;
+      gap: .65rem;
     }
     .review-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: #fff;
+      border: 1px solid #ebebeb;
       border-radius: 10px;
-      padding: .875rem 1rem;
+      padding: .85rem .9rem;
       flex-shrink: 0;
     }
-    .review-top { display: flex; align-items: center; gap: .65rem; margin-bottom: .45rem; }
+    .review-top {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      margin-bottom: .4rem;
+    }
     .reviewer-avatar {
-      width: 34px; height: 34px;
-      background: var(--orange);
+      width: 36px; height: 36px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: .9rem; color: white;
+      font-weight: 700; font-size: .85rem; color: white;
       flex-shrink: 0;
+      font-family: 'Google Sans', Arial, sans-serif;
     }
-    .reviewer-name { font-weight: 600; color: white; font-size: .9rem; line-height: 1.2; }
-    .review-stars { color: #fbbf24; font-size: .72rem; display: flex; gap: 1px; }
-    .review-text { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.5; font-style: italic; }
+    .reviewer-info { flex: 1; min-width: 0; }
+    .reviewer-name { font-weight: 600; color: #1a1a1a; font-size: .88rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .reviewer-meta { font-size: .72rem; color: #888; margin-top: 1px; }
+    .review-stars-row { display: flex; align-items: center; gap: .35rem; margin-bottom: .35rem; }
+    .review-stars-row .r-stars { color: #f5a623; font-size: .78rem; display: flex; gap: 1px; }
+    .review-date { font-size: .72rem; color: #aaa; }
+    .review-text { font-size: .82rem; color: #444; line-height: 1.55; }
+    .review-badge { display: inline-flex; align-items: center; gap: 3px; font-size: .68rem; color: #188038; font-weight: 600; margin-top: .35rem; }
+    .review-badge i { font-size: .65rem; }
   </style>
 
   <!-- Google Analytics -->
@@ -134,77 +181,121 @@
           </div>
         </div>
         <div class="hero-visual">
-          <!-- Google Reviews Social Proof -->
           <div class="hero-reviews">
+            <!-- Header -->
             <div class="reviews-header">
-              <div class="reviews-rating">
-                <span class="rating-num">5.0</span>
-                <div class="stars">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span class="reviews-source"><img src="https://www.google.com/favicon.ico" alt="Google" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;">Google Reviews</span>
+              <div class="reviews-glogo">
+                <!-- Google G logo SVG -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <span>Google Reviews</span>
+              </div>
+              <div class="reviews-aggregate">
+                <span class="agg-num">5.0</span>
+                <div class="agg-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <span class="agg-count">(9 reviews)</span>
               </div>
             </div>
-            <div class="reviews-scroll">
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">E</div>
-                  <div>
-                    <div class="reviewer-name">Eric Wilson</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <!-- Scrolling cards -->
+            <div class="reviews-scroll-wrap">
+              <div class="reviews-track" id="reviewsTrack">
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#1a73e8;">E</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Eric Wilson</div>
+                      <div class="reviewer-meta">Local Guide · 45 reviews · 95 photos</div>
+                    </div>
                   </div>
-                </div>
-                <p class="review-text">"Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama"</p>
-              </div>
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">E</div>
-                  <div>
-                    <div class="reviewer-name">Emma Ryu</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">2 days ago</span>
                   </div>
+                  <p class="review-text">Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama</p>
                 </div>
-                <p class="review-text">"Nathan has been the first person for any HVAC issues of my properties. I've known him for 10 years, very reliable and prompt service. Highly recommend!!!"</p>
-              </div>
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">S</div>
-                  <div>
-                    <div class="reviewer-name">Silas Tang</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#34a853;">E</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Emma Ryu</div>
+                      <div class="reviewer-meta">5 reviews</div>
+                    </div>
                   </div>
-                </div>
-                <p class="review-text">"Highly recommend CR. I called Nathan and he responded to my request immediately. He checked and cleaned everything. Excellent service. Price is reasonable."</p>
-              </div>
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">G</div>
-                  <div>
-                    <div class="reviewer-name">Gordon Esnard</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">3 weeks ago</span>
                   </div>
+                  <p class="review-text">Nathan has been the first person for any HVAC issues of my properties. I've known him for 10 years, very reliable and prompt service. Highly recommend!!!</p>
                 </div>
-                <p class="review-text">"I called ComfortRama, within 1 hour Nathan came out and had us back up and running. Highly professional."</p>
-              </div>
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">R</div>
-                  <div>
-                    <div class="reviewer-name">Russ Staynor</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#ea4335;">S</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Silas Tang</div>
+                      <div class="reviewer-meta">1 review · 1 photo</div>
+                    </div>
                   </div>
-                </div>
-                <p class="review-text">"Nathan is always on time and does the work. We trust him completely."</p>
-              </div>
-              <div class="review-card">
-                <div class="review-top">
-                  <div class="reviewer-avatar">N</div>
-                  <div>
-                    <div class="reviewer-name">Nancy Vaillancourt</div>
-                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">3 weeks ago</span>
                   </div>
+                  <p class="review-text">Highly recommend CR. Called Nathan and he responded immediately in a timely manner. He checked and cleaned everything. Excellent service. Price is reasonable.</p>
                 </div>
-                <p class="review-text">"Excellent communication, reliable, professional."</p>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#fbbc05; color:#333;">R</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Russ Staynor</div>
+                      <div class="reviewer-meta">16 reviews</div>
+                    </div>
+                  </div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">a week ago</span>
+                  </div>
+                  <p class="review-text">Nathan is always on time and does great work. We trust him completely.</p>
+                </div>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#0f9d58;">G</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Gordon Esnard</div>
+                      <div class="reviewer-meta">2 reviews</div>
+                    </div>
+                  </div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">2 weeks ago</span>
+                  </div>
+                  <p class="review-text">Woke up to a cold house and called ComfortRama. Within 1 hour Nathan was here and had us back up and running. Highly professional.</p>
+                </div>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#7c4dff;">R</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Robert Innis</div>
+                      <div class="reviewer-meta">4 reviews</div>
+                    </div>
+                  </div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">a week ago</span>
+                  </div>
+                  <p class="review-text">Very quick response. Excellent workmanship and friendly service.</p>
+                </div>
+                <div class="review-card">
+                  <div class="review-top">
+                    <div class="reviewer-avatar" style="background:#00acc1;">N</div>
+                    <div class="reviewer-info">
+                      <div class="reviewer-name">Nancy Vaillancourt</div>
+                      <div class="reviewer-meta">6 reviews</div>
+                    </div>
+                  </div>
+                  <div class="review-stars-row">
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <span class="review-date">a day ago</span>
+                  </div>
+                  <p class="review-text">Excellent communication, reliable, professional.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -730,24 +821,30 @@
             <p><i class="fas fa-clock"></i> Mon – Sat: 8am – 6pm</p>
    
   <script>
-    // Auto-scroll reviews
-    const scroll = document.querySelector(".reviews-scroll");
-    if (scroll) {
-      scroll.innerHTML += scroll.innerHTML;
+    // Auto-scroll reviews using scrollTop on the wrapper div
+    window.addEventListener('DOMContentLoaded', function() {
+      const wrap = document.querySelector('.reviews-scroll-wrap');
+      const track = document.getElementById('reviewsTrack');
+      if (!wrap || !track) return;
+
+      // Duplicate cards for seamless loop
+      track.innerHTML += track.innerHTML;
+
       let pos = 0;
       let paused = false;
-      scroll.addEventListener("mouseenter", () => paused = true);
-      scroll.addEventListener("mouseleave", () => paused = false);
+      wrap.addEventListener('mouseenter', () => paused = true);
+      wrap.addEventListener('mouseleave', () => paused = false);
+
       function tick() {
         if (!paused) {
-          pos += 0.6;
-          if (pos >= scroll.scrollHeight / 2) pos = 0;
-          scroll.scrollTop = pos;
+          pos += 0.5;
+          if (pos >= track.scrollHeight / 2) pos = 0;
+          wrap.scrollTop = pos;
         }
         requestAnimationFrame(tick);
       }
       tick();
-    }
+    });
   </script>
 </body>
 </html>
