@@ -30,6 +30,51 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hero Reviews Panel */
+    .hero-reviews {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .reviews-header { margin-bottom: 1rem; }
+    .reviews-rating { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    .rating-num { font-size: 2rem; font-weight: 800; color: white; line-height: 1; }
+    .reviews-rating .stars { color: #fbbf24; font-size: 1.1rem; display: flex; gap: 2px; }
+    .reviews-source { font-size: .8rem; color: rgba(255,255,255,.7); display: flex; align-items: center; }
+    .reviews-scroll {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: .875rem 1rem;
+      flex-shrink: 0;
+    }
+    .review-top { display: flex; align-items: center; gap: .65rem; margin-bottom: .45rem; }
+    .reviewer-avatar {
+      width: 34px; height: 34px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .9rem; color: white;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 600; color: white; font-size: .9rem; line-height: 1.2; }
+    .review-stars { color: #fbbf24; font-size: .72rem; display: flex; gap: 1px; }
+    .review-text { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.5; font-style: italic; }
+  </style>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2V0L6JLJN"></script>
@@ -75,22 +120,94 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="hero-badge"><i class="fas fa-certificate"></i> Licensed G2 Gas Technician — Ottawa, ON</div>
-          <h1>Ottawa's Home Comfort Experts</h1>
-          <p class="hero-sub">From furnace installations to gas lines, AC tune-ups to water heaters — we keep your home
-            running right, year-round.</p>
+          <div class="hero-badge"><i class="fas fa-fire"></i> BBQ Season is Here — Ottawa's Gas Line Experts</div>
+          <h1>Get Your BBQ Hooked Up Right</h1>
+          <p class="hero-sub">Permanent natural gas line for your barbecue — no more propane tanks. Licensed G2 technician, fast installation, flat-rate pricing. Serving all of Ottawa.</p>
           <div class="hero-trust">
-            <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed & Insured</span>
-            <span class="trust-item"><i class="fas fa-check-circle"></i> 15+ Years Experience</span>
-            <span class="trust-item"><i class="fas fa-check-circle"></i> 500+ Happy Clients</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed G2 Gas Technician</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> Same-Week Installs</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> TSSA Compliant</span>
           </div>
           <div class="hero-btns">
-            <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book a Service</a>
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book a BBQ Hookup</a>
             <a href="tel:6134222939" class="btn btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
           </div>
         </div>
         <div class="hero-visual">
-          <img src="newimage.png" alt="Ottawa suburban neighbourhood served by Comfortrama">
+          <!-- Google Reviews Social Proof -->
+          <div class="hero-reviews">
+            <div class="reviews-header">
+              <div class="reviews-rating">
+                <span class="rating-num">5.0</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <span class="reviews-source"><img src="https://www.google.com/favicon.ico" alt="Google" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;">Google Reviews</span>
+              </div>
+            </div>
+            <div class="reviews-scroll">
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">E</div>
+                  <div>
+                    <div class="reviewer-name">Eric Wilson</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama"</p>
+              </div>
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">E</div>
+                  <div>
+                    <div class="reviewer-name">Emma Ryu</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"Nathan has been the first person for any HVAC issues of my properties. I've known him for 10 years, very reliable and prompt service. Highly recommend!!!"</p>
+              </div>
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">S</div>
+                  <div>
+                    <div class="reviewer-name">Silas Tang</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"Highly recommend CR. I called Nathan and he responded to my request immediately. He checked and cleaned everything. Excellent service. Price is reasonable."</p>
+              </div>
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">G</div>
+                  <div>
+                    <div class="reviewer-name">Gordon Esnard</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"I called ComfortRama, within 1 hour Nathan came out and had us back up and running. Highly professional."</p>
+              </div>
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">R</div>
+                  <div>
+                    <div class="reviewer-name">Russ Staynor</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"Nathan is always on time and does the work. We trust him completely."</p>
+              </div>
+              <div class="review-card">
+                <div class="review-top">
+                  <div class="reviewer-avatar">N</div>
+                  <div>
+                    <div class="reviewer-name">Nancy Vaillancourt</div>
+                    <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  </div>
+                </div>
+                <p class="review-text">"Excellent communication, reliable, professional."</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -469,7 +586,7 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <h4>Email</h4>
-              <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#ccafa3a1aaa3beb8beada1ad8caba1ada5a0e2afa3a1"><span class="__cf_email__" data-cfemail="6d0e02000b021f191f0c000c2d0a000c0401430e0200">[email&#160;protected]</span></a>
             </div>
           </div>
           <div class="contact-card fade-in">
@@ -609,18 +726,28 @@
           <address>
             <p><i class="fas fa-map-marker-alt"></i> Ottawa, Ontario</p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:6134222939">(613) 422-2939</a></p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#83e0eceee5ecf1f7f1e2eee2c3e4eee2eaefade0ecee"><span class="__cf_email__" data-cfemail="abc8c4c6cdc4d9dfd9cac6caebccc6cac2c785c8c4c6">[email&#160;protected]</span></a></p>
             <p><i class="fas fa-clock"></i> Mon – Sat: 8am – 6pm</p>
-          </address>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 Comfortrama Heating & Cooling. All Rights Reserved. | Ottawa HVAC & Gas Line Services</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+   
+  <script>
+    // Auto-scroll reviews
+    const scroll = document.querySelector(".reviews-scroll");
+    if (scroll) {
+      scroll.innerHTML += scroll.innerHTML;
+      let pos = 0;
+      let paused = false;
+      scroll.addEventListener("mouseenter", () => paused = true);
+      scroll.addEventListener("mouseleave", () => paused = false);
+      function tick() {
+        if (!paused) {
+          pos += 0.6;
+          if (pos >= scroll.scrollHeight / 2) pos = 0;
+          scroll.scrollTop = pos;
+        }
+        requestAnimationFrame(tick);
+      }
+      tick();
+    }
+  </script>
 </body>
-
 </html>
