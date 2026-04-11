@@ -34,38 +34,17 @@
     /* ── VIDEO HERO ── */
     .hero-video {
       position: relative;
-      min-height: 600px;
       overflow: hidden;
-      background: #0c1d50;
-      display: flex;
-      align-items: center;
-    }
-    .hero-video-bg {
-      position: absolute;
-      top: 0; right: 0;
-      width: 50%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .hero-video-bg video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .hero-video-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, #0c1d50 0%, rgba(12,29,80,0.15) 50%, transparent 100%);
-      z-index: 1;
+      background: linear-gradient(120deg, #0c1d50 0%, #1a3a8f 50%, #2d56cc 100%);
+      color: white;
     }
     .hero-video::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, #0c1d50 0%, #1a3a8f 35%, rgba(26,58,143,0.55) 60%, rgba(12,29,80,0.2) 100%);
-      z-index: 1;
+      background: url('Gradient-BG.webp') center/cover no-repeat;
+      opacity: 0.06;
+      pointer-events: none;
     }
     .hero-video .container { position: relative; z-index: 2; width: 100%; }
     .hero-video-inner {
@@ -73,7 +52,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
-      padding: 5rem 0 4.5rem;
+      padding: 5rem 0 5rem;
     }
     .rv-google-bar {
       display: flex;
@@ -91,21 +70,88 @@
     .rv-google-bar .rv-gtext { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.9); }
     .rv-google-bar .rv-stars { color: #fbbf24; font-size: .72rem; display:flex; gap:1px; }
     .rv-google-bar .rv-rating { font-size: .85rem; font-weight: 800; color: #fff; }
-    .hero-video-reviews { display: flex; flex-direction: column; gap: .75rem; }
+
+    /* ── SKETCH LAYOUT: video center, reviews overlapping ── */
+    .hero-video-reviews {
+      position: relative;
+      /* tall enough to show video + cards spilling out */
+      height: 520px;
+    }
+
+    /* Video container — sits in center, takes up ~65% width, full height */
+    .rv-video-wrap {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 18%;
+      right: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+    }
+    .rv-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Google pill pinned to bottom of video */
+    .rv-google-pill {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 40px;
+      padding: 5px 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      z-index: 3;
+    }
+    .rv-pill-num { font-weight: 800; font-size: .82rem; color: #1a1a1a; }
+    .rv-pill-stars { color: #f5a623; font-size: .65rem; display:flex; gap:1px; }
+    .rv-pill-label { font-size: .72rem; font-weight: 600; color: #444; }
+
+    /* Review cards */
     .rv-card {
+      position: absolute;
       background: rgba(255,255,255,0.97);
       border-radius: 12px;
       padding: .85rem 1rem;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.28);
-      animation: rv-float 6s ease-in-out infinite;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+      width: 220px;
+      z-index: 4;
     }
-    .rv-card:nth-child(1) { animation-delay: 0s; }
-    .rv-card:nth-child(2) { animation-delay: -2s; margin-left: 1.2rem; }
-    .rv-card:nth-child(3) { animation-delay: -4s; }
+
+    /* Top-right card: peeks out from top-right, overlaps top of video */
+    .rv-card-tr {
+      top: -10px;
+      right: -10px;
+      animation: rv-float 5s ease-in-out infinite;
+    }
+
+    /* Left-middle card: peeks out from left, overlaps left edge of video at mid-height */
+    .rv-card-lm {
+      top: 42%;
+      left: -10px;
+      transform: translateY(-50%);
+      animation: rv-float 5s ease-in-out infinite;
+      animation-delay: -2.5s;
+    }
+
     @keyframes rv-float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
+      50% { transform: translateY(-7px); }
     }
+    .rv-card-lm { animation: rv-float-lm 5s ease-in-out infinite; animation-delay: -2.5s; }
+    @keyframes rv-float-lm {
+      0%, 100% { transform: translateY(calc(-50% + 0px)); }
+      50% { transform: translateY(calc(-50% - 7px)); }
+    }
+
     .rv-top { display: flex; align-items: center; gap: .55rem; margin-bottom: .35rem; }
     .rv-avatar {
       width: 32px; height: 32px; border-radius: 50%;
@@ -252,12 +298,6 @@
 
   <!-- Hero -->
   <section class="hero-video" id="home">
-    <!-- Video background (right side) -->
-    <div class="hero-video-bg">
-      <video autoplay muted loop playsinline>
-        <source src="pomelli_creative_video_9_16_0410.mp4" type="video/mp4">
-      </video>
-    </div>
     <div class="container">
       <div class="hero-video-inner">
         <!-- Left: copy -->
@@ -275,17 +315,10 @@
             <a href="tel:6134222939" class="btn btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
           </div>
         </div>
-        <!-- Right: floating Google review cards -->
+        <!-- Right: video + overlapping review cards -->
         <div class="hero-video-reviews">
-          <!-- Google badge -->
-          <div class="rv-google-bar">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-            <span class="rv-rating">5.0</span>
-            <div class="rv-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <span class="rv-gtext">Google Reviews</span>
-          </div>
-          <!-- Card 1 -->
-          <div class="rv-card">
+          <!-- Review top-right, overlaps top of video -->
+          <div class="rv-card rv-card-tr">
             <div class="rv-top">
               <div class="rv-avatar" style="background:#1a73e8;">E</div>
               <div>
@@ -299,8 +332,23 @@
             </div>
             <p class="rv-text">Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama</p>
           </div>
-          <!-- Card 2 -->
-          <div class="rv-card">
+
+          <!-- Video in the center -->
+          <div class="rv-video-wrap">
+            <video autoplay muted loop playsinline>
+              <source src="pomelli_creative_video_9_16_0410.mp4" type="video/mp4">
+            </video>
+            <!-- Google badge pinned to bottom of video -->
+            <div class="rv-google-pill">
+              <svg viewBox="0 0 24 24" width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              <span class="rv-pill-num">5.0</span>
+              <div class="rv-pill-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rv-pill-label">Google Reviews</span>
+            </div>
+          </div>
+
+          <!-- Review left-middle, overlaps left edge of video -->
+          <div class="rv-card rv-card-lm">
             <div class="rv-top">
               <div class="rv-avatar" style="background:#34a853;">E</div>
               <div>
@@ -312,22 +360,7 @@
               <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               <span class="rv-d">3 weeks ago</span>
             </div>
-            <p class="rv-text">Nathan has been the first person for any HVAC issues of my properties. 10 years, very reliable and prompt. Highly recommend!!!</p>
-          </div>
-          <!-- Card 3 -->
-          <div class="rv-card">
-            <div class="rv-top">
-              <div class="rv-avatar" style="background:#ea4335;">R</div>
-              <div>
-                <div class="rv-name">Russ Staynor</div>
-                <div class="rv-meta">16 reviews</div>
-              </div>
-            </div>
-            <div class="rv-stars-date">
-              <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              <span class="rv-d">a week ago</span>
-            </div>
-            <p class="rv-text">Nathan is always on time and does great work. We trust him completely.</p>
+            <p class="rv-text">Nathan has been my go-to for 10 years. Very reliable and prompt. Highly recommend!!!</p>
           </div>
         </div><!-- end hero-video-reviews -->
       </div>
