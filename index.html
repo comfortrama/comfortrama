@@ -31,7 +31,95 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Hero Reviews Panel — white card style */
+    /* ── VIDEO HERO ── */
+    .hero-video {
+      position: relative;
+      min-height: 600px;
+      overflow: hidden;
+      background: #0c1d50;
+      display: flex;
+      align-items: center;
+    }
+    .hero-video-bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-video-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #0c1d50 0%, rgba(12,29,80,0.15) 50%, transparent 100%);
+      z-index: 1;
+    }
+    .hero-video::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #0c1d50 0%, #1a3a8f 35%, rgba(26,58,143,0.55) 60%, rgba(12,29,80,0.2) 100%);
+      z-index: 1;
+    }
+    .hero-video .container { position: relative; z-index: 2; width: 100%; }
+    .hero-video-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 5rem 0 4.5rem;
+    }
+    .rv-google-bar {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 40px;
+      padding: .45rem .9rem;
+      width: fit-content;
+      margin-bottom: .6rem;
+      backdrop-filter: blur(8px);
+    }
+    .rv-google-bar svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .rv-google-bar .rv-gtext { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.9); }
+    .rv-google-bar .rv-stars { color: #fbbf24; font-size: .72rem; display:flex; gap:1px; }
+    .rv-google-bar .rv-rating { font-size: .85rem; font-weight: 800; color: #fff; }
+    .hero-video-reviews { display: flex; flex-direction: column; gap: .75rem; }
+    .rv-card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 12px;
+      padding: .85rem 1rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+      animation: rv-float 6s ease-in-out infinite;
+    }
+    .rv-card:nth-child(1) { animation-delay: 0s; }
+    .rv-card:nth-child(2) { animation-delay: -2s; margin-left: 1.2rem; }
+    .rv-card:nth-child(3) { animation-delay: -4s; }
+    @keyframes rv-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .rv-top { display: flex; align-items: center; gap: .55rem; margin-bottom: .35rem; }
+    .rv-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .8rem; color: white; flex-shrink: 0;
+    }
+    .rv-name { font-weight: 700; color: #1a1a1a; font-size: .84rem; line-height: 1.1; }
+    .rv-meta { font-size: .67rem; color: #888; }
+    .rv-stars-date { display: flex; align-items: center; gap: .4rem; margin-bottom: .28rem; }
+    .rv-stars-date .rv-s { color: #f5a623; font-size: .7rem; display:flex; gap:1px; }
+    .rv-stars-date .rv-d { font-size: .67rem; color: #aaa; }
+    .rv-text { font-size: .79rem; color: #333; line-height: 1.5; }
+
+    /* ── OLD HERO — hide it ── */
     .hero-reviews {
       background: #fff;
       border-radius: 16px;
@@ -163,12 +251,19 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="home">
+  <section class="hero-video" id="home">
+    <!-- Video background (right side) -->
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline>
+        <source src="pomelli_creative_video_9_16_0410.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="container">
-      <div class="hero-inner">
-        <div class="hero-content">
+      <div class="hero-video-inner">
+        <!-- Left: copy -->
+        <div class="hero-video-content">
           <div class="hero-badge"><i class="fas fa-fire"></i> BBQ Season is Here — Ottawa's Gas Line Experts</div>
-          <h1>Get Your BBQ Hooked Up Right</h1>
+          <h1 style="color:white;margin-bottom:1.25rem;">Get Your BBQ Hooked Up Right</h1>
           <p class="hero-sub">Permanent natural gas line for your barbecue — no more propane tanks. Licensed G2 technician, fast installation, flat-rate pricing. Serving all of Ottawa.</p>
           <div class="hero-trust">
             <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed G2 Gas Technician</span>
@@ -180,6 +275,70 @@
             <a href="tel:6134222939" class="btn btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
           </div>
         </div>
+        <!-- Right: floating Google review cards -->
+        <div class="hero-video-reviews">
+          <!-- Google badge -->
+          <div class="rv-google-bar">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="rv-rating">5.0</span>
+            <div class="rv-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <span class="rv-gtext">Google Reviews</span>
+          </div>
+          <!-- Card 1 -->
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-avatar" style="background:#1a73e8;">E</div>
+              <div>
+                <div class="rv-name">Eric Wilson</div>
+                <div class="rv-meta">Local Guide · 45 reviews</div>
+              </div>
+            </div>
+            <div class="rv-stars-date">
+              <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rv-d">2 days ago</span>
+            </div>
+            <p class="rv-text">Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-avatar" style="background:#34a853;">E</div>
+              <div>
+                <div class="rv-name">Emma Ryu</div>
+                <div class="rv-meta">5 reviews</div>
+              </div>
+            </div>
+            <div class="rv-stars-date">
+              <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rv-d">3 weeks ago</span>
+            </div>
+            <p class="rv-text">Nathan has been the first person for any HVAC issues of my properties. 10 years, very reliable and prompt. Highly recommend!!!</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="rv-card">
+            <div class="rv-top">
+              <div class="rv-avatar" style="background:#ea4335;">R</div>
+              <div>
+                <div class="rv-name">Russ Staynor</div>
+                <div class="rv-meta">16 reviews</div>
+              </div>
+            </div>
+            <div class="rv-stars-date">
+              <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rv-d">a week ago</span>
+            </div>
+            <p class="rv-text">Nathan is always on time and does great work. We trust him completely.</p>
+          </div>
+        </div><!-- end hero-video-reviews -->
+      </div>
+    </div>
+  </section>
+
+  <!-- OLD HERO (hidden) — keeping for reference -->
+  <section class="hero" id="home-old" style="display:none">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content"></div>
         <div class="hero-visual">
           <div class="hero-reviews">
             <!-- Header -->
@@ -817,34 +976,9 @@
           <address>
             <p><i class="fas fa-map-marker-alt"></i> Ottawa, Ontario</p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:6134222939">(613) 422-2939</a></p>
-            <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#83e0eceee5ecf1f7f1e2eee2c3e4eee2eaefade0ecee"><span class="__cf_email__" data-cfemail="abc8c4c6cdc4d9dfd9cac6caebccc6cac2c785c8c4c6">[email&#160;protected]</span></a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a></p>
             <p><i class="fas fa-clock"></i> Mon – Sat: 8am – 6pm</p>
-   
-  <script>
-    // Auto-scroll reviews using scrollTop on the wrapper div
-    window.addEventListener('DOMContentLoaded', function() {
-      const wrap = document.querySelector('.reviews-scroll-wrap');
-      const track = document.getElementById('reviewsTrack');
-      if (!wrap || !track) return;
 
-      // Duplicate cards for seamless loop
-      track.innerHTML += track.innerHTML;
-
-      let pos = 0;
-      let paused = false;
-      wrap.addEventListener('mouseenter', () => paused = true);
-      wrap.addEventListener('mouseleave', () => paused = false);
-
-      function tick() {
-        if (!paused) {
-          pos += 0.5;
-          if (pos >= track.scrollHeight / 2) pos = 0;
-          wrap.scrollTop = pos;
-        }
-        requestAnimationFrame(tick);
-      }
-      tick();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
