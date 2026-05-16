@@ -18,18 +18,18 @@
     content="Furnace, AC, gas lines & water heaters. Licensed G2 technician serving Ottawa. Call (613) 422-2939.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.comfortrama.com">
-  <meta property="og:image" content="https://www.comfortrama.com/LOGO__1_.webp">
+  <meta property="og:image" content="assets/images/LOGO__1_.webp">
   <meta property="og:locale" content="en_CA">
   <link rel="canonical" href="https://www.comfortrama.com">
-  <link rel="icon" href="CR-48x48-fav.webp">
-  <link rel="apple-touch-icon" href="CR-48x48-fav.webp">
+  <link rel="icon" href="assets/images/CR-48x48-fav.webp">
+  <link rel="apple-touch-icon" href="assets/images/CR-48x48-fav.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     /* ── VIDEO HERO ── */
     .hero-video {
@@ -38,15 +38,22 @@
       background: linear-gradient(120deg, #0c1d50 0%, #1a3a8f 50%, #2d56cc 100%);
       color: white;
     }
+
     .hero-video::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('Gradient-BG.webp') center/cover no-repeat;
+      background: url('assets/images/Gradient-BG.webp') center/cover no-repeat;
       opacity: 0.06;
       pointer-events: none;
     }
-    .hero-video .container { position: relative; z-index: 2; width: 100%; }
+
+    .hero-video .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
     .hero-video-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -54,22 +61,44 @@
       align-items: center;
       padding: 5rem 0 5rem;
     }
+
     .rv-google-bar {
       display: flex;
       align-items: center;
       gap: .5rem;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 40px;
       padding: .45rem .9rem;
       width: fit-content;
       margin-bottom: .6rem;
       backdrop-filter: blur(8px);
     }
-    .rv-google-bar svg { width: 16px; height: 16px; flex-shrink: 0; }
-    .rv-google-bar .rv-gtext { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.9); }
-    .rv-google-bar .rv-stars { color: #fbbf24; font-size: .72rem; display:flex; gap:1px; }
-    .rv-google-bar .rv-rating { font-size: .85rem; font-weight: 800; color: #fff; }
+
+    .rv-google-bar svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .rv-google-bar .rv-gtext {
+      font-size: .8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .rv-google-bar .rv-stars {
+      color: #fbbf24;
+      font-size: .72rem;
+      display: flex;
+      gap: 1px;
+    }
+
+    .rv-google-bar .rv-rating {
+      font-size: .85rem;
+      font-weight: 800;
+      color: #fff;
+    }
 
     /* ── SKETCH LAYOUT: video center, reviews overlapping ── */
     .hero-video-reviews {
@@ -80,13 +109,15 @@
     /* Video container */
     .rv-video-wrap {
       position: absolute;
-      top: 0; bottom: 0;
+      top: 0;
+      bottom: 0;
       left: 18%;
       right: 0;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
     }
+
     .rv-video-wrap video {
       width: 100%;
       height: 100%;
@@ -103,27 +134,45 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 40px;
       padding: 5px 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
       white-space: nowrap;
       z-index: 3;
     }
-    .rv-pill-num { font-weight: 800; font-size: .82rem; color: #1a1a1a; }
-    .rv-pill-stars { color: #f5a623; font-size: .65rem; display:flex; gap:1px; }
-    .rv-pill-label { font-size: .72rem; font-weight: 600; color: #444; }
+
+    .rv-pill-num {
+      font-weight: 800;
+      font-size: .82rem;
+      color: #1a1a1a;
+    }
+
+    .rv-pill-stars {
+      color: #f5a623;
+      font-size: .65rem;
+      display: flex;
+      gap: 1px;
+    }
+
+    .rv-pill-label {
+      font-size: .72rem;
+      font-weight: 600;
+      color: #444;
+    }
 
     /* Cards row — hidden as a row on desktop, both cards absolutely positioned */
-    .rv-cards-row { display: contents; }
+    .rv-cards-row {
+      display: contents;
+    }
 
     /* Review cards */
     .rv-card {
       position: absolute;
-      background: rgba(255,255,255,0.97);
+      background: rgba(255, 255, 255, 0.97);
       border-radius: 12px;
       padding: .85rem 1rem;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
       width: 220px;
       z-index: 4;
     }
@@ -143,20 +192,64 @@
       animation-delay: -2.5s;
     }
 
- 
 
-    .rv-top { display: flex; align-items: center; gap: .55rem; margin-bottom: .35rem; }
-    .rv-avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: .8rem; color: white; flex-shrink: 0;
+
+    .rv-top {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: .35rem;
     }
-    .rv-name { font-weight: 700; color: #1a1a1a; font-size: .84rem; line-height: 1.1; }
-    .rv-meta { font-size: .67rem; color: #888; }
-    .rv-stars-date { display: flex; align-items: center; gap: .4rem; margin-bottom: .28rem; }
-    .rv-stars-date .rv-s { color: #f5a623; font-size: .7rem; display:flex; gap:1px; }
-    .rv-stars-date .rv-d { font-size: .67rem; color: #aaa; }
-    .rv-text { font-size: .79rem; color: #333; line-height: 1.5; }
+
+    .rv-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .8rem;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .rv-name {
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: .84rem;
+      line-height: 1.1;
+    }
+
+    .rv-meta {
+      font-size: .67rem;
+      color: #888;
+    }
+
+    .rv-stars-date {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: .28rem;
+    }
+
+    .rv-stars-date .rv-s {
+      color: #f5a623;
+      font-size: .7rem;
+      display: flex;
+      gap: 1px;
+    }
+
+    .rv-stars-date .rv-d {
+      font-size: .67rem;
+      color: #aaa;
+    }
+
+    .rv-text {
+      font-size: .79rem;
+      color: #333;
+      line-height: 1.5;
+    }
 
     /* ── MOBILE: hero-video ── */
     @media (max-width: 1024px) {
@@ -165,20 +258,35 @@
         gap: 2rem;
         padding: 3rem 0 2rem;
       }
+
       .hero-video-content {
         text-align: center;
       }
-      .hero-badge { margin: 0 auto 1rem; }
-      .hero-trust { justify-content: center; }
-      .hero-btns { justify-content: center; }
+
+      .hero-badge {
+        margin: 0 auto 1rem;
+      }
+
+      .hero-trust {
+        justify-content: center;
+      }
+
+      .hero-btns {
+        justify-content: center;
+      }
+
       .hero-video-reviews {
         height: 420px;
       }
+
       .rv-video-wrap {
         left: 15%;
         right: 0;
       }
-      .rv-card { width: 200px; }
+
+      .rv-card {
+        width: 200px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -200,7 +308,10 @@
       /* Video takes full width, fixed aspect ratio */
       .rv-video-wrap {
         position: relative;
-        top: auto; bottom: auto; left: auto; right: auto;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
         width: 100%;
         height: 300px;
         border-radius: 14px;
@@ -233,19 +344,18 @@
     }
 
     @media (max-width: 480px) {
-      .rv-video-wrap { height: 260px; }
-      .rv-cards-row { flex-direction: column; gap: .5rem; }
+      .rv-video-wrap {
+        height: 260px;
+      }
+
+      .rv-cards-row {
+        flex-direction: column;
+        gap: .5rem;
+      }
     }
-      background: #fff;
-      border-radius: 16px;
-      padding: 1rem 1rem .5rem;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.22);
-      height: 420px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      width: 100%;
-    }
+
+
+
     .reviews-header {
       display: flex;
       align-items: center;
@@ -255,21 +365,49 @@
       margin-bottom: .75rem;
       flex-shrink: 0;
     }
+
     .reviews-glogo {
       display: flex;
       align-items: center;
       gap: .5rem;
     }
-    .reviews-glogo svg { width: 20px; height: 20px; flex-shrink: 0; }
-    .reviews-glogo span { font-size: .85rem; font-weight: 600; color: #444; }
+
+    .reviews-glogo svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .reviews-glogo span {
+      font-size: .85rem;
+      font-weight: 600;
+      color: #444;
+    }
+
     .reviews-aggregate {
       display: flex;
       align-items: center;
       gap: .4rem;
     }
-    .reviews-aggregate .agg-num { font-size: 1.4rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
-    .reviews-aggregate .agg-stars { color: #f5a623; font-size: .9rem; display: flex; gap: 1px; }
-    .reviews-aggregate .agg-count { font-size: .75rem; color: #888; }
+
+    .reviews-aggregate .agg-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .reviews-aggregate .agg-stars {
+      color: #f5a623;
+      font-size: .9rem;
+      display: flex;
+      gap: 1px;
+    }
+
+    .reviews-aggregate .agg-count {
+      font-size: .75rem;
+      color: #888;
+    }
 
     .reviews-scroll-wrap {
       flex: 1;
@@ -279,21 +417,29 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    .reviews-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    .reviews-scroll-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
     .reviews-scroll-wrap::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 48px;
       background: linear-gradient(transparent, white);
       pointer-events: none;
       z-index: 2;
     }
+
     .reviews-track {
       display: flex;
       flex-direction: column;
       gap: .65rem;
     }
+
     .review-card {
       background: #fff;
       border: 1px solid #ebebeb;
@@ -301,38 +447,96 @@
       padding: .85rem .9rem;
       flex-shrink: 0;
     }
+
     .review-top {
       display: flex;
       align-items: flex-start;
       gap: .6rem;
       margin-bottom: .4rem;
     }
+
     .reviewer-avatar {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: .85rem; color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .85rem;
+      color: white;
       flex-shrink: 0;
       font-family: 'Google Sans', Arial, sans-serif;
     }
-    .reviewer-info { flex: 1; min-width: 0; }
-    .reviewer-name { font-weight: 600; color: #1a1a1a; font-size: .88rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .reviewer-meta { font-size: .72rem; color: #888; margin-top: 1px; }
-    .review-stars-row { display: flex; align-items: center; gap: .35rem; margin-bottom: .35rem; }
-    .review-stars-row .r-stars { color: #f5a623; font-size: .78rem; display: flex; gap: 1px; }
-    .review-date { font-size: .72rem; color: #aaa; }
-    .review-text { font-size: .82rem; color: #444; line-height: 1.55; }
-    .review-badge { display: inline-flex; align-items: center; gap: 3px; font-size: .68rem; color: #188038; font-weight: 600; margin-top: .35rem; }
-    .review-badge i { font-size: .65rem; }
+
+    .reviewer-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .reviewer-name {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: .88rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reviewer-meta {
+      font-size: .72rem;
+      color: #888;
+      margin-top: 1px;
+    }
+
+    .review-stars-row {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: .35rem;
+    }
+
+    .review-stars-row .r-stars {
+      color: #f5a623;
+      font-size: .78rem;
+      display: flex;
+      gap: 1px;
+    }
+
+    .review-date {
+      font-size: .72rem;
+      color: #aaa;
+    }
+
+    .review-text {
+      font-size: .82rem;
+      color: #444;
+      line-height: 1.55;
+    }
+
+    .review-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: .68rem;
+      color: #188038;
+      font-weight: 600;
+      margin-top: .35rem;
+    }
+
+    .review-badge i {
+      font-size: .65rem;
+    }
   </style>
 
 
 </head>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17993415445"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
   gtag('config', 'AW-17993415445');
@@ -351,15 +555,30 @@
   <header>
     <div class="header-inner">
       <div class="logo">
-        <a href="index.html"><img src="Screenshot_2025-07-05_220316.png" alt="Comfortrama Heating & Cooling Ottawa"></a>
+        <a href="index.html"><img src="assets/images/Screenshot_2025-07-05_220316.png"
+            alt="Comfortrama Heating & Cooling Ottawa"></a>
       </div>
       <nav>
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="pages/services.html">Services</a></li>
           <li><a href="pages/heating.html">Heating</a></li>
           <li><a href="pages/cooling.html">Cooling</a></li>
           <li><a href="pages/water-heating.html">Water Heating</a></li>
-          <li><a href="index.html#gas-services">Gas Lines</a></li>
+          <li><a href="pages/gas-lines.html">Gas Lines</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Locations <i class="fas fa-chevron-down" style="font-size:.7rem;"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="locations/ottawa.html"><i class="fas fa-map-pin"></i> Ottawa</a></li>
+              <li><a href="locations/orleans.html"><i class="fas fa-map-pin"></i> Orléans</a></li>
+              <li><a href="locations/kanata.html"><i class="fas fa-map-pin"></i> Kanata</a></li>
+              <li><a href="locations/nepean.html"><i class="fas fa-map-pin"></i> Nepean</a></li>
+              <li><a href="locations/barrhaven.html"><i class="fas fa-map-pin"></i> Barrhaven</a></li>
+              <li><a href="locations/stittsville.html"><i class="fas fa-map-pin"></i> Stittsville</a></li>
+              <li><a href="locations/gloucester.html"><i class="fas fa-map-pin"></i> Gloucester</a></li>
+              <li><a href="locations/manotick.html"><i class="fas fa-map-pin"></i> Manotick</a></li>
+            </ul>
+          </li>
           <li><a href="index.html#about">About Us</a></li>
           <li><a href="index.html#contact" class="nav-cta"><i class="fas fa-phone"></i> (613) 422-2939</a></li>
         </ul>
@@ -376,7 +595,8 @@
         <div class="hero-video-content">
           <div class="hero-badge"><i class="fas fa-fire"></i> BBQ Season is Here — Ottawa's Gas Line Experts</div>
           <h1 style="color:white;margin-bottom:1.25rem;">Get Your BBQ Hooked Up Right</h1>
-          <p class="hero-sub">Permanent natural gas line for your barbecue — no more propane tanks. Licensed G2 technician, fast installation, flat-rate pricing. Serving all of Ottawa.</p>
+          <p class="hero-sub">Permanent natural gas line for your barbecue — no more propane tanks. Licensed G2
+            technician, fast installation, flat-rate pricing. Serving all of Ottawa.</p>
           <div class="hero-trust">
             <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed G2 Gas Technician</span>
             <span class="trust-item"><i class="fas fa-check-circle"></i> Same-Week Installs</span>
@@ -392,13 +612,27 @@
           <!-- Video in the center -->
           <div class="rv-video-wrap">
             <video autoplay muted loop playsinline>
-              <source src="pomelli_creative_video_9_16_0410.mp4" type="video/mp4">
+              <source src="assets/video/pomelli_creative_video_9_16_0410.mp4" type="video/mp4">
             </video>
             <!-- Google badge pinned to bottom of video -->
             <div class="rv-google-pill">
-              <svg viewBox="0 0 24 24" width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              <svg viewBox="0 0 24 24" width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4" />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853" />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                  fill="#FBBC05" />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335" />
+              </svg>
               <span class="rv-pill-num">5.0</span>
-              <div class="rv-pill-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <div class="rv-pill-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               <span class="rv-pill-label">Google Reviews</span>
             </div>
           </div>
@@ -415,10 +649,12 @@
                 </div>
               </div>
               <div class="rv-stars-date">
-                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <span class="rv-d">2 days ago</span>
               </div>
-              <p class="rv-text">Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama</p>
+              <p class="rv-text">Nathan was nice and the new furnace looks great and is much quieter than my old one.
+                Thanks Comfort Rama</p>
             </div>
 
             <!-- Review left-middle on desktop, right card on mobile -->
@@ -431,10 +667,12 @@
                 </div>
               </div>
               <div class="rv-stars-date">
-                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <span class="rv-d">3 weeks ago</span>
               </div>
-              <p class="rv-text">Nathan has been my go-to for 10 years. Very reliable and prompt. Highly recommend!!!</p>
+              <p class="rv-text">Nathan has been my go-to for 10 years. Very reliable and prompt. Highly recommend!!!
+              </p>
             </div>
           </div>
         </div><!-- end hero-video-reviews -->
@@ -453,12 +691,26 @@
             <div class="reviews-header">
               <div class="reviews-glogo">
                 <!-- Google G logo SVG -->
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4" />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853" />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                    fill="#FBBC05" />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335" />
+                </svg>
                 <span>Google Reviews</span>
               </div>
               <div class="reviews-aggregate">
                 <span class="agg-num">5.0</span>
-                <div class="agg-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="agg-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <span class="agg-count">(9 reviews)</span>
               </div>
             </div>
@@ -474,10 +726,12 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">2 days ago</span>
                   </div>
-                  <p class="review-text">Nathan was nice and the new furnace looks great and is much quieter than my old one. Thanks Comfort Rama</p>
+                  <p class="review-text">Nathan was nice and the new furnace looks great and is much quieter than my old
+                    one. Thanks Comfort Rama</p>
                 </div>
                 <div class="review-card">
                   <div class="review-top">
@@ -488,10 +742,12 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">3 weeks ago</span>
                   </div>
-                  <p class="review-text">Nathan has been the first person for any HVAC issues of my properties. I've known him for 10 years, very reliable and prompt service. Highly recommend!!!</p>
+                  <p class="review-text">Nathan has been the first person for any HVAC issues of my properties. I've
+                    known him for 10 years, very reliable and prompt service. Highly recommend!!!</p>
                 </div>
                 <div class="review-card">
                   <div class="review-top">
@@ -502,10 +758,12 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">3 weeks ago</span>
                   </div>
-                  <p class="review-text">Highly recommend CR. Called Nathan and he responded immediately in a timely manner. He checked and cleaned everything. Excellent service. Price is reasonable.</p>
+                  <p class="review-text">Highly recommend CR. Called Nathan and he responded immediately in a timely
+                    manner. He checked and cleaned everything. Excellent service. Price is reasonable.</p>
                 </div>
                 <div class="review-card">
                   <div class="review-top">
@@ -516,7 +774,8 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">a week ago</span>
                   </div>
                   <p class="review-text">Nathan is always on time and does great work. We trust him completely.</p>
@@ -530,10 +789,12 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">2 weeks ago</span>
                   </div>
-                  <p class="review-text">Woke up to a cold house and called ComfortRama. Within 1 hour Nathan was here and had us back up and running. Highly professional.</p>
+                  <p class="review-text">Woke up to a cold house and called ComfortRama. Within 1 hour Nathan was here
+                    and had us back up and running. Highly professional.</p>
                 </div>
                 <div class="review-card">
                   <div class="review-top">
@@ -544,7 +805,8 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">a week ago</span>
                   </div>
                   <p class="review-text">Very quick response. Excellent workmanship and friendly service.</p>
@@ -558,7 +820,8 @@
                     </div>
                   </div>
                   <div class="review-stars-row">
-                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="r-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <span class="review-date">a day ago</span>
                   </div>
                   <p class="review-text">Excellent communication, reliable, professional.</p>
@@ -701,24 +964,25 @@
       <div class="brands-row">
         <div class="brand-tile">
           <a href="https://www.trane.com" target="_blank" rel="noopener">
-            <img src="download (1) (1).png" alt="Trane HVAC"
+            <img src="assets/images/download (1) (1).png" alt="Trane HVAC"
               style="height:44px;width:auto;filter:brightness(0) invert(1);">
           </a>
         </div>
         <div class="brand-tile">
           <a href="https://www.goodmanmfg.com" target="_blank" rel="noopener">
-            <img src="download__3_.png" alt="Goodman HVAC"
+            <img src="assets/images/download__3_.png" alt="Goodman HVAC"
               style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
         </div>
         <div class="brand-tile">
           <a href="https://www.rheem.com" target="_blank" rel="noopener">
-            <img src="download.png" alt="Rheem HVAC" style="height:44px;width:auto;filter:brightness(0) invert(1);">
+            <img src="assets/images/download.png" alt="Rheem HVAC"
+              style="height:44px;width:auto;filter:brightness(0) invert(1);">
           </a>
         </div>
         <div class="brand-tile">
           <a href="https://www.keeprite.com" target="_blank" rel="noopener">
-            <img src="keeprite-logo-white (1).png" alt="KeepRite Heating & Cooling"
+            <img src="assets/images/keeprite-logo-white (1).png" alt="KeepRite Heating & Cooling"
               style="height:36px;width:auto;filter:brightness(0) invert(1);">
           </a>
         </div>
@@ -731,7 +995,8 @@
     <div class="container">
       <div class="why-grid">
         <div class="about-visual">
-          <img src="About-PIC.webp" alt="Comfortrama HVAC technician at work" style="width:100%;height:auto;">
+          <img src="assets/images/About-PIC.webp" alt="Comfortrama HVAC technician at work"
+            style="width:100%;height:auto;">
         </div>
         <div>
           <div class="section-header fade-in">
@@ -904,7 +1169,7 @@
           </div>
         </div>
         <div class="area-map fade-in">
-          <img src="ottawa-neighbourhood.png" alt="Ottawa suburbs served by Comfortrama">
+          <img src="assets/images/ottawa-neighbourhood.png" alt="Ottawa suburbs served by Comfortrama">
         </div>
       </div>
     </div>
@@ -944,7 +1209,9 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <h4>Email</h4>
-              <a href="/cdn-cgi/l/email-protection#ccafa3a1aaa3beb8beada1ad8caba1ada5a0e2afa3a1"><span class="__cf_email__" data-cfemail="6d0e02000b021f191f0c000c2d0a000c0401430e0200">[email&#160;protected]</span></a>
+              <a href="/cdn-cgi/l/email-protection#ccafa3a1aaa3beb8beada1ad8caba1ada5a0e2afa3a1"><span
+                  class="__cf_email__"
+                  data-cfemail="6d0e02000b021f191f0c000c2d0a000c0401430e0200">[email&#160;protected]</span></a>
             </div>
           </div>
           <div class="contact-card fade-in">
@@ -1055,7 +1322,7 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <img src="Screenshot_2025-07-05_220316.png" alt="Comfortrama" class="footer-logo-img"
+          <img src="assets/images/Screenshot_2025-07-05_220316.png" alt="Comfortrama" class="footer-logo-img"
             style="height:60px;margin-bottom:.75rem;">
           <p class="footer-tagline">Your comfort is our priority.</p>
           <p class="footer-cert">Licensed G2 Gas Technician · Fully Insured · TSSA Compliant</p>
@@ -1087,6 +1354,18 @@
             <p><i class="fas fa-envelope"></i> <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a></p>
             <p><i class="fas fa-clock"></i> Mon – Sat: 8am – 6pm</p>
 
-  <script src="script.js"></script>
+            <script src="assets/js/script.js"></script>
+            <script>
+              // Mobile dropdown toggle for Locations
+              document.querySelectorAll('.nav-dropdown > a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                  if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    this.closest('.nav-dropdown').classList.toggle('open');
+                  }
+                });
+              });
+            </script>
 </body>
+
 </html>
