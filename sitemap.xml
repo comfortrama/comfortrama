@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.comfortrama.com/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.comfortrama.com/pages/heating.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.comfortrama.com/pages/cooling.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.comfortrama.com/pages/water-heating.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+ 
+  <!-- Core -->
+  <url><loc>https://www.comfortrama.com/</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+ 
+  <!-- Services -->
+  <url><loc>https://www.comfortrama.com/pages/services.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/heating.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/cooling.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/water-heating.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/furnace.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/ductless.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/tankless-water-heater.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/water-heater.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/gas-lines.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/hrv.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.comfortrama.com/pages/fireplace-gas.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+ 
+  <!-- Locations -->
+  <url><loc>https://www.comfortrama.com/locations/ottawa.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/orleans.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/kanata.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/nepean.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/barrhaven.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/stittsville.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/gloucester.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.comfortrama.com/locations/manotick.html</loc><lastmod>2025-07-05</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+ 
 </urlset>
