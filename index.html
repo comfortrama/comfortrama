@@ -2,25 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) event - delayed navigation helper -->
-<script>
-  // Helper function to delay opening a URL until a gtag event is sent.
-  // Call it in response to an action that should navigate to a URL.
-  function gtagSendEvent(url) {
-    var callback = function () {
-      if (typeof url === 'string') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion_event_contact', {
-      'event_callback': callback,
-      'event_timeout': 2000,
-      // <event_parameters>
-    });
-    return false;
-  }
-</script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comfortrama Heating & Cooling Ottawa | HVAC, Gas Lines & More | (613) 422-2939</title>
@@ -54,30 +35,42 @@
     .hero-video {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(120deg, #0c1d50 0%, #1a3a8f 50%, #2d56cc 100%);
+      background: #0a0f1a;
       color: white;
     }
 
+    /* Background photo */
+    .hero-video::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/Gemini_Generated_Image_lrrd3plrrd3plrrd.png') center/cover no-repeat;
+      opacity: 1;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Dark overlay on top of photo, like Gravity */
     .hero-video::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('assets/images/Gradient-BG.webp') center/cover no-repeat;
-      opacity: 0.06;
+      background: linear-gradient(to right, rgba(5, 10, 20, 0.82) 0%, rgba(5, 10, 20, 0.65) 55%, rgba(5, 10, 20, 0.75) 100%);
+      z-index: 1;
       pointer-events: none;
     }
 
     .hero-video .container {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       width: 100%;
     }
 
     .hero-video-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 420px;
       gap: 3rem;
-      align-items: center;
+      align-items: flex-start;
       padding: 5rem 0 5rem;
     }
 
@@ -279,11 +272,11 @@
       }
 
       .hero-video-content {
-        text-align: center;
+        text-align: left;
       }
 
       .hero-badge {
-        margin: 0 auto 1rem;
+        margin: 0 0 1rem;
       }
 
       .hero-trust {
@@ -544,8 +537,141 @@
       margin-top: .35rem;
     }
 
-    .review-badge i {
-      font-size: .65rem;
+    /* ── HERO FORM BOX (Gravity style) ── */
+    .hero-form-box {
+      background: #fff;
+      border-radius: 6px;
+      padding: 2rem 1.75rem 1.75rem;
+      box-shadow: 0 16px 56px rgba(0, 0, 0, 0.45);
+      position: relative;
+      z-index: 4;
+    }
+
+    .hero-form-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #c0392b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: .35rem;
+      font-family: "Barlow", sans-serif;
+    }
+
+    .hero-form-sub {
+      font-size: .88rem;
+      color: #555;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .hf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-bottom: .75rem;
+    }
+
+    .hf-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: .75rem;
+    }
+
+    .hf-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .hf-group label {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #222;
+      margin-bottom: .3rem;
+      font-family: "Barlow", sans-serif;
+    }
+
+    .hf-group label span {
+      color: #c0392b;
+    }
+
+    .hf-group input,
+    .hf-group select,
+    .hf-group textarea {
+      border: 1px solid #d0d0d0;
+      border-radius: 4px;
+      padding: .55rem .75rem;
+      font-size: .88rem;
+      font-family: "Barlow", sans-serif;
+      color: #333;
+      background: #fafafa;
+      transition: border-color .2s;
+      outline: none;
+    }
+
+    .hf-group input:focus,
+    .hf-group select:focus,
+    .hf-group textarea:focus {
+      border-color: #2d56cc;
+      background: #fff;
+    }
+
+    .hf-group textarea {
+      resize: vertical;
+    }
+
+    .hf-submit {
+      width: 100%;
+      background: #e8500a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: .85rem;
+      font-size: .95rem;
+      font-weight: 800;
+      font-family: "Barlow", sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: .85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background .2s, transform .15s;
+    }
+
+    .hf-submit:hover {
+      background: #1b5e20;
+      transform: translateY(-1px);
+    }
+
+    /* Hero text tweaks */
+    .hero-video-content .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .82);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── HERO FORM MOBILE ── */
+    @media (max-width: 1024px) {
+      .hero-video-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 0 2.5rem;
+      }
+
+      .hero-form-box {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hf-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 
@@ -566,7 +692,7 @@
   <div class="top-bar">
     <div class="container">
       Licensed G2 Gas Technician &nbsp;·&nbsp; Serving All of Ottawa &nbsp;·&nbsp;
-      <a href="tel:6134222939" onclick="gtag_report_conversion()">(613) 422-2939</a>
+      <a href="tel:6134222939">(613) 422-2939</a>
     </div>
   </div>
 
@@ -612,88 +738,82 @@
       <div class="hero-video-inner">
         <!-- Left: copy -->
         <div class="hero-video-content">
-          <div class="hero-badge"><i class="fas fa-fire"></i> Ottawa's Cooling Experts — Same-Day AC Service</div>
-          <h1 style="color:white;margin-bottom:1.25rem;">Stay Cool This Summer, Ottawa</h1>
-          <p class="hero-sub">Expert AC repair and installation across Ottawa and all surrounding suburbs. Licensed G2 technician, same-day service, flat-rate pricing. No surprises — just cool air, fast.</p>
+          <div class="hero-badge"><i class="fas fa-fire"></i> Ottawa's Trusted HVAC Specialist</div>
+          <h1
+            style="color:white;margin-bottom:1.25rem;font-size:clamp(2.6rem,5.5vw,4rem);font-weight:900;line-height:1.0;text-transform:uppercase;letter-spacing:-0.5px;">
+            YOUR HOME'S <span style="color:#e8500a;">COMFORT</span><br>STARTS HERE.</h1>
+          <p class="hero-sub">Your trusted source for professional, reliable, and affordable heating, cooling, and water
+            heater services. Keeping Ottawa homes comfortable all year round.</p>
           <div class="hero-trust">
-            <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed G2 Gas Technician</span>
-            <span class="trust-item"><i class="fas fa-check-circle"></i> Same-Week Installs</span>
-            <span class="trust-item"><i class="fas fa-check-circle"></i> TSSA Compliant</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> 1000+ Homes Serviced</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> Same-Day Service</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> 5 Stars on Google</span>
           </div>
           <div class="hero-btns">
-            <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i>Book AC Service</a>
-            <a href="tel:6134222939" class="btn btn-white" onclick="gtag_report_conversion()"><i class="fas fa-phone"></i> (613) 422-2939</a>
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book a Service</a>
+            <a href="tel:6134222939" class="btn btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
           </div>
         </div>
-        <!-- Right: video + overlapping review cards -->
-        <div class="hero-video-reviews">
-          <!-- Video in the center -->
-          <div class="rv-video-wrap">
-            <video autoplay muted loop playsinline>
-              <source src="assets/images/pomelli_creative_image_9_16_0518.png" type="video/mp4">
-            </video>
-            <!-- Google badge pinned to bottom of video -->
-            <div class="rv-google-pill">
-              <svg viewBox="0 0 24 24" width="14" height="14" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                  fill="#4285F4" />
-                <path
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  fill="#34A853" />
-                <path
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
-                  fill="#FBBC05" />
-                <path
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  fill="#EA4335" />
-              </svg>
-              <span class="rv-pill-num">5.0</span>
-              <div class="rv-pill-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              <span class="rv-pill-label">Google Reviews</span>
+        <!-- Right: Get Help Fast form (like Gravity) -->
+        <div class="hero-form-box">
+          <h3 class="hero-form-title">GET HELP FAST</h3>
+          <p class="hero-form-sub">Tell us what's going on — we'll call you back within the hour.</p>
+          <form action="https://api.web3forms.com/submit" method="POST" id="heroForm" target="_blank">
+            <input type="hidden" name="access_key" value="d765b1bf-10b7-4f13-9a7c-322d71911a9b">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_captcha" value="true">
+            <div class="hf-row">
+              <div class="hf-group">
+                <label>FIRST NAME <span>*</span></label>
+                <input type="text" name="first_name" placeholder="Enter Your First Name" required>
+              </div>
+              <div class="hf-group">
+                <label>LAST NAME <span>*</span></label>
+                <input type="text" name="last_name" placeholder="Enter Your Last Name" required>
+              </div>
             </div>
-          </div>
-
-          <!-- Review cards row (side by side on mobile, absolute on desktop) -->
-          <div class="rv-cards-row">
-            <!-- Review top-right on desktop, left card on mobile -->
-            <div class="rv-card rv-card-tr">
-              <div class="rv-top">
-                <div class="rv-avatar" style="background:#1a73e8;">E</div>
-                <div>
-                  <div class="rv-name">Eric Wilson</div>
-                  <div class="rv-meta">Local Guide · 45 reviews</div>
-                </div>
-              </div>
-              <div class="rv-stars-date">
-                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <span class="rv-d">2 days ago</span>
-              </div>
-              <p class="rv-text">Nathan was nice and the new furnace looks great and is much quieter than my old one.
-                Thanks Comfort Rama</p>
+            <div class="hf-group">
+              <label>E-MAIL <span>*</span></label>
+              <input type="email" name="email" placeholder="Email Address" required>
             </div>
-
-            <!-- Review left-middle on desktop, right card on mobile -->
-            <div class="rv-card rv-card-lm">
-              <div class="rv-top">
-                <div class="rv-avatar" style="background:#34a853;">E</div>
-                <div>
-                  <div class="rv-name">Emma Ryu</div>
-                  <div class="rv-meta">5 reviews</div>
-                </div>
-              </div>
-              <div class="rv-stars-date">
-                <div class="rv-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <span class="rv-d">3 weeks ago</span>
-              </div>
-              <p class="rv-text">Nathan has been my go-to for 10 years. Very reliable and prompt. Highly recommend!!!
-              </p>
+            <div class="hf-group">
+              <label>STREET ADDRESS <span>*</span></label>
+              <input type="text" name="address" placeholder="Enter Your Street Address" required>
             </div>
-          </div>
-        </div><!-- end hero-video-reviews -->
+            <div class="hf-row">
+              <div class="hf-group">
+                <label>POSTAL CODE <span>*</span></label>
+                <input type="text" name="postal" placeholder="Enter Your Postal Code" required>
+              </div>
+              <div class="hf-group">
+                <label>PHONE NUMBER <span>*</span></label>
+                <input type="tel" name="phone" placeholder="Mobile Number" required>
+              </div>
+            </div>
+            <div class="hf-group">
+              <label>PLEASE SELECT YOUR ISSUE <span>*</span></label>
+              <select name="issue" required>
+                <option value="" disabled selected>Please select your issue</option>
+                <option>Furnace – Installation</option>
+                <option>Furnace – Repair / Maintenance</option>
+                <option>AC – Installation</option>
+                <option>AC – Repair / Maintenance</option>
+                <option>Water Heater – Installation</option>
+                <option>Water Heater – Repair</option>
+                <option>Gas Line – BBQ / Outdoor</option>
+                <option>Gas Line – Stove / Fireplace</option>
+                <option>Heat Pump</option>
+                <option>HRV / Ventilation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="hf-group">
+              <label>MESSAGE</label>
+              <textarea name="message" placeholder="Leave a comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="hf-submit"><i class="fas fa-phone"></i> REQUEST A CALLBACK</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -936,7 +1056,7 @@
     <div class="container">
       <div class="section-header center fade-in">
         <span class="section-label">Gas Line Services</span>
-        <h2>Licensed G2 Gas Specialist</h2>
+        <h2>Ottawa's Gas Line Pros</h2>
         <p>TSSA-compliant gas line installations and repairs throughout the Ottawa region.</p>
       </div>
       <div class="services-grid-3">
@@ -1200,7 +1320,7 @@
       <p>Call us or book online — we respond within 24 hours.</p>
       <div class="cta-btns">
         <a href="#contact" class="btn btn-white"><i class="fas fa-calendar-check"></i> Book a Service</a>
-        <a href="tel:6134222939" class="btn btn-secondary" style="border-color:white;color:white;" onclick="gtag_report_conversion()"><i
+        <a href="tel:6134222939" class="btn btn-secondary" style="border-color:white;color:white;"><i
             class="fas fa-phone"></i> (613) 422-2939</a>
       </div>
     </div>
@@ -1220,7 +1340,7 @@
             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
             <div>
               <h4>Phone</h4>
-              <a href="tel:6134222939" onclick="gtag_report_conversion()">(613) 422-2939</a>
+              <a href="tel:6134222939">(613) 422-2939</a>
             </div>
           </div>
           <div class="contact-card fade-in">
@@ -1323,7 +1443,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-full"><i class="fas fa-calendar-check"></i> Submit
               Request</button>
-            <p class="form-note">Or call us directly: <a href="tel:6134222939" onclick="gtag_report_conversion()">(613) 422-2939</a></p>
+            <p class="form-note">Or call us directly: <a href="tel:6134222939">(613) 422-2939</a></p>
           </form>
           <div id="form-success" class="form-success">
             <i class="fas fa-check-circle"></i>
@@ -1368,7 +1488,7 @@
           <h4>Contact Us</h4>
           <address>
             <p><i class="fas fa-map-marker-alt"></i> Ottawa, Ontario</p>
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:6134222939" onclick="gtag_report_conversion()">(613) 422-2939</a></p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:6134222939">(613) 422-2939</a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a></p>
             <p><i class="fas fa-clock"></i> Mon – Sat: 8am – 6pm</p>
 
