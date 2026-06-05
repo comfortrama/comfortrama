@@ -11,177 +11,165 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { font-family: "Barlow", sans-serif; color: #1a1a1a; background: #fff; }
-    .lp-container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+    .lp-container { max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; }
 
-    /* ── TOP BAR ── */
+    /* TOP BAR */
     .lp-topbar {
       background: #1a1a2e;
       color: rgba(255,255,255,.85);
-      font-size: .82rem;
+      font-size: .8rem;
       font-weight: 600;
       text-align: center;
-      padding: .55rem 1rem;
+      padding: .5rem 1rem;
       letter-spacing: .3px;
     }
-    .lp-topbar a { color: #e8500a; text-decoration: none; }
+    .lp-topbar a { color: #e8500a; text-decoration: none; font-weight: 700; }
 
-    /* ── NAV ── */
+    /* NAV */
     .lp-nav {
       background: #fff;
       border-bottom: 1px solid #eee;
-      padding: .85rem 0;
+      padding: .65rem 0;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
     .lp-nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: .75rem;
       max-width: 1140px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.25rem;
     }
-    .lp-nav img { height: 56px; width: auto; }
-    .lp-nav-cta {
+    .lp-nav-logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: .55rem;
+      text-decoration: none;
+      flex-shrink: 0;
     }
-    .lp-phone {
-      font-size: 1.15rem;
+    .lp-nav-logo img { height: 42px; width: auto; }
+    .lp-nav-logo-name { font-size: .88rem; font-weight: 900; color: #1a1a2e; line-height: 1.1; }
+    .lp-nav-logo-sub { font-size: .7rem; color: #888; font-weight: 600; }
+    .lp-nav-right { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+    .lp-nav-phone {
+      font-size: .95rem;
       font-weight: 800;
       color: #1a1a2e;
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
+      white-space: nowrap;
     }
-    .lp-phone i { color: #e8500a; }
+    .lp-nav-phone i { color: #e8500a; font-size: .82rem; }
     .lp-nav-btn {
       background: #e8500a;
       color: #fff;
       font-family: "Barlow", sans-serif;
-      font-size: .85rem;
+      font-size: .8rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .5px;
       border: none;
       border-radius: 4px;
-      padding: .6rem 1.25rem;
+      padding: .55rem 1rem;
       text-decoration: none;
       cursor: pointer;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    /* ── HERO ── */
-    .lp-hero {
-      position: relative;
-      background: #0a0f1a;
-      overflow: hidden;
-      color: #fff;
-    }
+    /* HERO */
+    .lp-hero { position: relative; background: #0a0f1a; overflow: hidden; color: #fff; }
     .lp-hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background: url('assets/images/Gemini_Generated_Image_lrrd3plrrd3plrrd.png') center/cover no-repeat;
-      opacity: 1;
       z-index: 0;
     }
     .lp-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(5,10,20,.88) 0%, rgba(5,10,20,.70) 55%, rgba(5,10,20,.80) 100%);
+      background: linear-gradient(to right, rgba(5,10,20,.90) 0%, rgba(5,10,20,.72) 55%, rgba(5,10,20,.82) 100%);
       z-index: 1;
     }
     .lp-hero-inner {
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 3rem;
+      grid-template-columns: 1fr 410px;
+      gap: 2.5rem;
       align-items: flex-start;
-      padding: 4.5rem 0 4.5rem;
+      padding: 4rem 0;
     }
-
-    /* offer ribbon */
     .lp-offer-ribbon {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       background: #e8500a;
       color: #fff;
-      font-size: .82rem;
+      font-size: .78rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .8px;
       border-radius: 4px;
-      padding: .4rem .9rem;
-      margin-bottom: 1.1rem;
+      padding: .38rem .85rem;
+      margin-bottom: 1rem;
     }
-
     .lp-hero h1 {
-      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.6rem, 5.5vw, 4rem);
       font-weight: 900;
       line-height: 1.0;
       text-transform: uppercase;
       letter-spacing: -.5px;
       color: #fff;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
     .lp-hero h1 span { color: #e8500a; }
-
     .lp-hero-sub {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: rgba(255,255,255,.82);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
-      max-width: 520px;
+      margin-bottom: 1.4rem;
+      max-width: 500px;
     }
-
-    .lp-trust {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem .75rem;
-      margin-bottom: 1.75rem;
-    }
+    .lp-trust { display: flex; flex-wrap: wrap; gap: .4rem .7rem; margin-top: 1.2rem; }
     .lp-trust-item {
-      font-size: .88rem;
+      font-size: .85rem;
       font-weight: 700;
       color: rgba(255,255,255,.9);
       display: flex;
       align-items: center;
       gap: 5px;
     }
-    .lp-trust-item i { color: #4caf50; font-size: .85rem; }
-
-    .lp-hero-btns {
-      display: flex;
-      gap: .85rem;
-      flex-wrap: wrap;
-    }
+    .lp-trust-item i { color: #4caf50; font-size: .8rem; }
+    .lp-hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
     .lp-btn-primary {
       background: #e8500a;
       color: #fff;
       font-family: "Barlow", sans-serif;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: .95rem;
       text-transform: uppercase;
       letter-spacing: .5px;
-      padding: .85rem 1.75rem;
+      padding: .8rem 1.5rem;
       border-radius: 4px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       transition: background .2s, transform .15s;
       box-shadow: 0 4px 16px rgba(232,80,10,.4);
     }
@@ -191,25 +179,25 @@
       color: #fff;
       font-family: "Barlow", sans-serif;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: .95rem;
       text-transform: uppercase;
       letter-spacing: .5px;
-      padding: .85rem 1.75rem;
+      padding: .8rem 1.5rem;
       border-radius: 4px;
-      border: 2px solid rgba(255,255,255,.5);
+      border: 2px solid rgba(255,255,255,.45);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       transition: border-color .2s, background .2s;
     }
     .lp-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 
-    /* ── HERO FORM ── */
+    /* HERO FORM */
     .lp-form-box {
       background: #fff;
       border-radius: 6px;
-      padding: 1.75rem 1.75rem 1.75rem;
+      padding: 1.5rem;
       box-shadow: 0 20px 60px rgba(0,0,0,.5);
       position: relative;
       z-index: 3;
@@ -218,8 +206,8 @@
       background: #fff8f0;
       border: 2px solid #e8500a;
       border-radius: 5px;
-      padding: .7rem 1rem;
-      margin-bottom: 1.1rem;
+      padding: .65rem .9rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -227,59 +215,53 @@
     .lp-form-offer-badge {
       background: #e8500a;
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 900;
-      padding: .25rem .6rem;
+      padding: .2rem .55rem;
       border-radius: 4px;
       white-space: nowrap;
       line-height: 1.2;
+      text-align: center;
     }
-    .lp-form-offer-text {
-      font-size: .82rem;
-      color: #333;
-      line-height: 1.4;
-    }
+    .lp-form-offer-text { font-size: .8rem; color: #333; line-height: 1.4; }
     .lp-form-offer-text strong { color: #c94208; font-weight: 800; }
     .lp-form-title {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 900;
       color: #c0392b;
       text-transform: uppercase;
       letter-spacing: .5px;
-      margin-bottom: .25rem;
+      margin-bottom: .2rem;
     }
-    .lp-form-sub {
-      font-size: .85rem;
-      color: #555;
-      margin-bottom: 1.1rem;
-      line-height: 1.5;
-    }
-    .hf-row { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: .65rem; }
-    .hf-group { display: flex; flex-direction: column; margin-bottom: .65rem; }
+    .lp-form-sub { font-size: .82rem; color: #555; margin-bottom: 1rem; line-height: 1.5; }
+    .hf-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: .6rem; }
+    .hf-group { display: flex; flex-direction: column; margin-bottom: .6rem; }
     .hf-group label {
-      font-size: .68rem;
+      font-size: .66rem;
       font-weight: 800;
       letter-spacing: .8px;
       text-transform: uppercase;
       color: #222;
-      margin-bottom: .25rem;
+      margin-bottom: .22rem;
     }
     .hf-group label span { color: #c0392b; }
     .hf-group input, .hf-group select, .hf-group textarea {
       border: 1px solid #d0d0d0;
       border-radius: 4px;
-      padding: .5rem .7rem;
-      font-size: .86rem;
+      padding: .5rem .65rem;
       font-family: "Barlow", sans-serif;
       color: #333;
       background: #fafafa;
       transition: border-color .2s;
       outline: none;
+      width: 100%;
+      font-size: 16px; /* prevents iOS zoom */
     }
     .hf-group input:focus, .hf-group select:focus, .hf-group textarea:focus {
       border-color: #e8500a;
       background: #fff;
     }
+    .hf-group textarea { resize: none; }
     .hf-submit {
       width: 100%;
       background: #e8500a;
@@ -287,197 +269,163 @@
       border: none;
       border-radius: 4px;
       padding: .9rem;
-      font-size: .95rem;
+      font-size: .9rem;
       font-weight: 800;
       font-family: "Barlow", sans-serif;
       letter-spacing: .5px;
       text-transform: uppercase;
       cursor: pointer;
-      margin-top: .65rem;
+      margin-top: .6rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       transition: background .2s, transform .15s;
       box-shadow: 0 4px 14px rgba(232,80,10,.35);
+      -webkit-appearance: none;
     }
     .hf-submit:hover { background: #c94208; transform: translateY(-1px); }
-    .hf-disclaimer {
-      font-size: .72rem;
-      color: #888;
-      text-align: center;
-      margin-top: .6rem;
-      line-height: 1.4;
-    }
+    .hf-disclaimer { font-size: .7rem; color: #888; text-align: center; margin-top: .55rem; line-height: 1.4; }
+    .hf-disclaimer a { color: #e8500a; font-weight: 700; text-decoration: none; }
 
-    /* ── OFFER BANNER ── */
-    .lp-offer-band {
-      background: #e8500a;
-      color: #fff;
-      padding: 2rem 0;
-      text-align: center;
+    /* MOBILE STICKY CTA BAR */
+    .lp-mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding: .65rem .85rem;
+      background: #1a1a2e;
+      gap: .55rem;
     }
+    .lp-mobile-cta a {
+      flex: 1;
+      text-align: center;
+      font-family: "Barlow", sans-serif;
+      font-weight: 800;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      padding: .7rem .5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .lp-mobile-cta .cta-call { background: #e8500a; color: #fff; }
+    .lp-mobile-cta .cta-form { background: #fff; color: #e8500a; }
+
+    /* OFFER BAND */
+    .lp-offer-band { background: #e8500a; color: #fff; padding: 2rem 1.25rem; text-align: center; }
     .lp-offer-band h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-size: clamp(1.4rem, 3vw, 2rem);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -.3px;
       margin-bottom: .4rem;
     }
-    .lp-offer-band p {
-      font-size: 1rem;
-      opacity: .9;
-      margin-bottom: 1.25rem;
-    }
-    .lp-offer-band .lp-btn-white {
+    .lp-offer-band p { font-size: .95rem; opacity: .9; margin-bottom: 1.1rem; }
+    .lp-btn-white {
       background: #fff;
       color: #e8500a;
       font-family: "Barlow", sans-serif;
       font-weight: 800;
-      font-size: .95rem;
+      font-size: .9rem;
       text-transform: uppercase;
       letter-spacing: .5px;
-      padding: .8rem 2rem;
+      padding: .75rem 1.75rem;
       border-radius: 4px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
     }
 
-    /* ── WHY SECTION ── */
-    .lp-why { padding: 4rem 0; background: #f8f8f8; }
-    .lp-section-label {
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #e8500a;
-      margin-bottom: .4rem;
-    }
-    .lp-section-title {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 900;
-      color: #1a1a2e;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-    }
-    .lp-section-sub {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-      max-width: 560px;
-    }
-    .lp-why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-    .lp-why-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.5rem 1.25rem;
-      border: 1px solid #eee;
-    }
+    /* WHY */
+    .lp-why { padding: 3.5rem 0; background: #f8f8f8; }
+    .lp-section-label { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #e8500a; margin-bottom: .35rem; }
+    .lp-section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 900; color: #1a1a2e; margin-bottom: .45rem; text-transform: uppercase; }
+    .lp-section-sub { font-size: .95rem; color: #555; line-height: 1.7; margin-bottom: 2rem; max-width: 540px; }
+    .lp-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .lp-why-card { background: #fff; border-radius: 8px; padding: 1.25rem 1.1rem; border: 1px solid #eee; }
     .lp-why-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px; height: 44px;
       background: #fff3ec;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      color: #e8500a;
-      margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #e8500a;
+      margin-bottom: .85rem;
     }
-    .lp-why-card h4 { font-size: .95rem; font-weight: 800; color: #1a1a2e; margin-bottom: .4rem; }
-    .lp-why-card p { font-size: .85rem; color: #666; line-height: 1.6; }
+    .lp-why-card h4 { font-size: .9rem; font-weight: 800; color: #1a1a2e; margin-bottom: .35rem; }
+    .lp-why-card p { font-size: .82rem; color: #666; line-height: 1.6; }
 
-    /* ── REVIEWS ── */
-    .lp-reviews { padding: 4rem 0; background: #fff; }
-    .lp-reviews-header { text-align: center; margin-bottom: 2.5rem; }
+    /* REVIEWS */
+    .lp-reviews { padding: 3.5rem 0; background: #fff; }
+    .lp-reviews-header { text-align: center; margin-bottom: 2rem; }
     .lp-google-rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #f8f8f8;
-      border: 1px solid #eee;
-      border-radius: 40px;
-      padding: .5rem 1.1rem;
-      margin-top: .75rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f8f8f8; border: 1px solid #eee;
+      border-radius: 40px; padding: .45rem 1rem; margin-top: .65rem;
     }
-    .lp-google-rating .stars { color: #f5a623; font-size: .9rem; }
-    .lp-google-rating span { font-size: .85rem; font-weight: 700; color: #333; }
-    .lp-reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.1rem;
-    }
-    .lp-review-card {
-      background: #fff;
-      border: 1px solid #ebebeb;
-      border-radius: 10px;
-      padding: 1.1rem 1.15rem;
-    }
-    .lp-review-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: .6rem;
-    }
-    .lp-reviewer {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-    .lp-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: .9rem;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .lp-reviewer-name { font-weight: 700; color: #1a1a1a; font-size: .88rem; line-height: 1.1; }
-    .lp-reviewer-meta { font-size: .7rem; color: #888; }
-    .lp-review-stars { color: #f5a623; font-size: .8rem; }
-    .lp-review-date { font-size: .7rem; color: #aaa; }
-    .lp-review-text { font-size: .84rem; color: #444; line-height: 1.55; margin-top: .5rem; }
+    .lp-google-rating .stars { color: #f5a623; font-size: .85rem; }
+    .lp-google-rating span { font-size: .82rem; font-weight: 700; color: #333; }
+    .lp-reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; }
+    .lp-review-card { background: #fff; border: 1px solid #ebebeb; border-radius: 10px; padding: 1rem 1.1rem; }
+    .lp-review-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+    .lp-reviewer { display: flex; align-items: center; gap: .55rem; }
+    .lp-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; color: #fff; flex-shrink: 0; }
+    .lp-reviewer-name { font-weight: 700; color: #1a1a1a; font-size: .85rem; line-height: 1.1; }
+    .lp-reviewer-meta { font-size: .68rem; color: #888; }
+    .lp-review-stars { color: #f5a623; font-size: .78rem; }
+    .lp-review-date { font-size: .68rem; color: #aaa; }
+    .lp-review-text { font-size: .82rem; color: #444; line-height: 1.55; margin-top: .45rem; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     .lp-footer {
       background: #1a1a2e;
-      color: rgba(255,255,255,.65);
+      color: rgba(255,255,255,.6);
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: .83rem;
-      line-height: 1.7;
+      padding: 2rem 1rem 3rem;
+      font-size: .82rem;
+      line-height: 1.8;
     }
-    .lp-footer a { color: rgba(255,255,255,.65); text-decoration: none; }
+    .lp-footer a { color: rgba(255,255,255,.6); text-decoration: none; }
     .lp-footer a:hover { color: #e8500a; }
-    .lp-footer-logo { height: 48px; width: auto; margin-bottom: .75rem; filter: brightness(0) invert(1); opacity: .7; }
+    .lp-footer-logo { height: 46px; width: auto; margin-bottom: .65rem; filter: brightness(0) invert(1); opacity: .65; }
 
-    /* ── MOBILE ── */
+    /* MOBILE BREAKPOINTS */
     @media (max-width: 1024px) {
       .lp-hero-inner { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0 2.5rem; }
-      .lp-form-box { max-width: 560px; margin: 0 auto; }
+      .lp-form-box { max-width: 540px; margin: 0 auto; }
     }
     @media (max-width: 640px) {
-      .hf-row { grid-template-columns: 1fr; }
+      .lp-mobile-cta { display: flex; }
+      .lp-footer { padding-bottom: 5.5rem; }
+      .lp-nav { padding: .5rem 0; }
+      .lp-nav-logo img { height: 36px; }
+      .lp-nav-logo-sub { display: none; }
+      .lp-nav-phone { display: none; }
+      .lp-nav-btn { font-size: .75rem; padding: .5rem .85rem; }
+      .lp-hero-inner { padding: 2rem 0 2rem; gap: 1.75rem; }
+      .lp-hero h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .lp-hero-sub { font-size: .95rem; }
       .lp-hero-btns { flex-direction: column; }
-      .lp-btn-primary, .lp-btn-outline { justify-content: center; }
-      .lp-nav-btn { display: none; }
+      .lp-btn-primary, .lp-btn-outline { justify-content: center; width: 100%; }
+      .hf-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 0; }
+      .lp-why-grid { grid-template-columns: 1fr 1fr; }
+      .lp-reviews-grid { grid-template-columns: 1fr; }
+      .lp-offer-band h2 { font-size: 1.3rem; }
+    }
+    @media (max-width: 380px) {
+      .lp-why-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
-<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17993415445"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -488,35 +436,38 @@
 
 <body>
 
-  <!-- Top Bar -->
   <div class="lp-topbar">
-    Licensed G2 Technician &nbsp;·&nbsp; Serving All of Ottawa &nbsp;·&nbsp;
+    Licensed G2 Technician &nbsp;·&nbsp; Same-Day Service &nbsp;·&nbsp;
     <a href="tel:6134222939">(613) 422-2939</a>
   </div>
 
-  <!-- Nav -->
   <nav class="lp-nav">
     <div class="lp-nav-inner">
-      <a href="index.html">
-        <img src="assets/images/613-422-2939.png" alt="Comfortrama Heating & Cooling Ottawa">
+      <a href="index.html" class="lp-nav-logo">
+        <img src="assets/images/CR-48x48-fav.webp" alt="Comfortrama logo">
+        <div>
+          <div class="lp-nav-logo-name">Comfortrama</div>
+          <div class="lp-nav-logo-sub">Heating & Cooling Ottawa</div>
+        </div>
       </a>
-      <div class="lp-nav-cta">
-        
-        <a href="#claim-offer" class="lp-nav-btn">Claim $50 Off</a>
+      <div class="lp-nav-right">
+        <a href="tel:6134222939" class="lp-nav-phone"><i class="fas fa-phone"></i> (613) 422-2939</a>
+        <a href="#claim-offer" class="lp-nav-btn"><i class="fas fa-tag"></i> Claim $50 Off</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="lp-hero" id="home">
     <div class="lp-container">
       <div class="lp-hero-inner">
-
-        <!-- Left copy -->
         <div>
           <div class="lp-offer-ribbon"><i class="fas fa-tag"></i> Limited Offer — $50 Off Diagnostic or Maintenance</div>
           <h1>IS YOUR AC<br><span>NOT COOLING?</span><br>WE FIX IT FAST.</h1>
           <p class="lp-hero-sub">Ottawa's emergency AC repair specialists. Same-day service, flat-rate pricing, and $50 off your diagnostic or maintenance visit. Don't sweat it — we've got you covered.</p>
+          <div class="lp-hero-btns">
+            <a href="tel:6134222939" class="lp-btn-primary"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
+            <a href="#claim-offer" class="lp-btn-outline"><i class="fas fa-tag"></i> Claim $50 Off</a>
+          </div>
           <div class="lp-trust">
             <span class="lp-trust-item"><i class="fas fa-check-circle"></i> Same-Day Emergency Service</span>
             <span class="lp-trust-item"><i class="fas fa-check-circle"></i> Licensed G2 Technician</span>
@@ -524,19 +475,14 @@
             <span class="lp-trust-item"><i class="fas fa-check-circle"></i> 5-Star Google Rated</span>
             <span class="lp-trust-item"><i class="fas fa-check-circle"></i> TSSA Compliant</span>
           </div>
-          <div class="lp-hero-btns">
-            <a href="tel:6134222939" class="lp-btn-primary"><i class="fas fa-phone"></i> Call Now — (613) 422-2939</a>
-            <a href="#claim-offer" class="lp-btn-outline"><i class="fas fa-tag"></i> Claim $50 Off</a>
-          </div>
         </div>
 
-        <!-- Right form -->
         <div class="lp-form-box" id="claim-offer">
           <div class="lp-form-offer">
             <div class="lp-form-offer-badge">$50<br>OFF</div>
             <div class="lp-form-offer-text">
               <strong>Exclusive Offer: $50 Off</strong><br>
-              Your AC diagnostic or maintenance visit. Fill out the form and we'll call you back within the hour.
+              Your AC diagnostic or maintenance. We call back within the hour.
             </div>
           </div>
           <h3 class="lp-form-title">CLAIM YOUR $50 OFF</h3>
@@ -549,27 +495,27 @@
             <div class="hf-row">
               <div class="hf-group">
                 <label>FIRST NAME <span>*</span></label>
-                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name">
               </div>
               <div class="hf-group">
                 <label>LAST NAME <span>*</span></label>
-                <input type="text" name="last_name" placeholder="Last Name" required>
+                <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name">
               </div>
             </div>
             <div class="hf-row">
               <div class="hf-group">
                 <label>PHONE <span>*</span></label>
-                <input type="tel" name="phone" placeholder="(613) 555-0000" required>
+                <input type="tel" name="phone" placeholder="(613) 555-0000" required autocomplete="tel">
               </div>
               <div class="hf-group">
                 <label>POSTAL CODE <span>*</span></label>
-                <input type="text" name="postal" placeholder="K1A 0A1" required>
+                <input type="text" name="postal" placeholder="K1A 0A1" required autocomplete="postal-code">
               </div>
             </div>
             <div class="hf-group">
-              <label>ISSUE <span>*</span></label>
+              <label>WHAT'S HAPPENING? <span>*</span></label>
               <select name="issue" required>
-                <option value="" disabled selected>What's happening with your AC?</option>
+                <option value="" disabled selected>Select your issue</option>
                 <option>AC not cooling / blowing warm air</option>
                 <option>AC not turning on</option>
                 <option>AC making strange noise</option>
@@ -581,76 +527,72 @@
               </select>
             </div>
             <div class="hf-group">
-              <label>MESSAGE</label>
+              <label>MESSAGE (optional)</label>
               <textarea name="message" placeholder="Any extra details help us prepare..." rows="2"></textarea>
             </div>
             <button type="submit" class="hf-submit"><i class="fas fa-tag"></i> CLAIM $50 OFF — BOOK NOW</button>
-            <p class="hf-disclaimer">Or call us directly: <a href="tel:6134222939" style="color:#e8500a;font-weight:700;">(613) 422-2939</a> · We respond within 1 hour</p>
+            <p class="hf-disclaimer">Or call: <a href="tel:6134222939">(613) 422-2939</a> · We respond within 1 hour</p>
           </form>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Offer Band -->
   <div class="lp-offer-band">
     <div class="lp-container">
       <h2>$50 Off Your AC Diagnostic or Maintenance</h2>
-      <p>Book today — same-day appointments available across Ottawa, Kanata, Barrhaven, Orléans & Nepean.</p>
+      <p>Same-day appointments across Ottawa, Kanata, Barrhaven, Orléans & Nepean.</p>
       <a href="tel:6134222939" class="lp-btn-white"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
     </div>
   </div>
 
-  <!-- Why Us -->
   <section class="lp-why">
     <div class="lp-container">
       <div class="lp-section-label">Why Comfortrama</div>
       <h2 class="lp-section-title">Ottawa's Emergency AC Experts</h2>
-      <p class="lp-section-sub">When your AC breaks down in the Ottawa summer heat, you need someone fast, reliable, and honest. That's us.</p>
+      <p class="lp-section-sub">When your AC breaks down in Ottawa summer heat, you need someone fast, reliable, and honest. That's us.</p>
       <div class="lp-why-grid">
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-bolt"></i></div>
           <h4>Same-Day Service</h4>
-          <p>Call us in the morning, we're at your door the same day. No waiting days for a technician.</p>
+          <p>Call in the morning, we're at your door the same day.</p>
         </div>
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-medal"></i></div>
           <h4>Licensed G2 Technician</h4>
-          <p>Fully licensed, insured, and TSSA compliant. Every repair done right the first time.</p>
+          <p>Fully licensed, insured, and TSSA compliant. Done right the first time.</p>
         </div>
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-dollar-sign"></i></div>
-          <h4>Flat-Rate, Honest Pricing</h4>
-          <p>No surprise fees. You'll know the cost before we start — and $50 off your first visit.</p>
+          <h4>Flat-Rate Pricing</h4>
+          <p>No surprise fees. Know the cost before we start — plus $50 off.</p>
         </div>
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-star"></i></div>
           <h4>5-Star Google Rated</h4>
-          <p>Hundreds of Ottawa homeowners trust Comfortrama. See what they say below.</p>
+          <p>Trusted by hundreds of Ottawa homeowners. See reviews below.</p>
         </div>
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-map-marker-alt"></i></div>
           <h4>All Ottawa Suburbs</h4>
-          <p>Ottawa, Kanata, Barrhaven, Orléans, Nepean, Stittsville, Gloucester & Manotick.</p>
+          <p>Ottawa, Kanata, Barrhaven, Orléans, Nepean, Stittsville & more.</p>
         </div>
         <div class="lp-why-card">
           <div class="lp-why-icon"><i class="fas fa-history"></i></div>
           <h4>15+ Years Experience</h4>
-          <p>Serving Ottawa homeowners for over 15 years. We've seen every AC problem there is.</p>
+          <p>Serving Ottawa homeowners for over 15 years.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews -->
   <section class="lp-reviews">
     <div class="lp-container">
       <div class="lp-reviews-header">
         <div class="lp-section-label">Google Reviews</div>
         <h2 class="lp-section-title">What Ottawa Homeowners Say</h2>
         <div class="lp-google-rating">
-          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
             <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
             <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -661,165 +603,100 @@
         </div>
       </div>
       <div class="lp-reviews-grid">
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#7c4dff;">N</div>
-              <div>
-                <div class="lp-reviewer-name">Nadia Malik</div>
-                <div class="lp-reviewer-meta">Local Guide · 17 reviews</div>
-              </div>
+              <div><div class="lp-reviewer-name">Nadia Malik</div><div class="lp-reviewer-meta">Local Guide · 17 reviews</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">a month ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">a month ago</div></div>
           </div>
-          <p class="lp-review-text">We have only trusted Comfort Rama for over a decade with our heating and cooling systems. He is honest and reliable and the best prices in the city. He will make himself available during emergencies — like when my mom's furnace went out in the middle of winter and sourced parts within the day on a holiday. Highly recommend!</p>
+          <p class="lp-review-text">We have only trusted Comfort Rama for over a decade. Honest, reliable, best prices in the city. He makes himself available during emergencies — like when my mom's furnace went out in the middle of winter and sourced parts within the day on a holiday. Highly recommend!</p>
         </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#1a73e8;">T</div>
-              <div>
-                <div class="lp-reviewer-name">Tomasz G</div>
-                <div class="lp-reviewer-meta">Local Guide · 24 reviews</div>
-              </div>
+              <div><div class="lp-reviewer-name">Tomasz G</div><div class="lp-reviewer-meta">Local Guide · 24 reviews</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">3 weeks ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">3 weeks ago</div></div>
           </div>
           <p class="lp-review-text">Nathan has been my HVAC technician for many years now. Very dependable. Any time I contact him with furnace or AC issues, he comes by and takes care of the problem.</p>
         </div>
-
-        <div class="lp-review-card">
-          <div class="lp-review-top">
-            <div class="lp-reviewer">
-              <div class="lp-avatar" style="background:#34a853;">B</div>
-              <div>
-                <div class="lp-reviewer-name">Bruce Carruthers</div>
-                <div class="lp-reviewer-meta">1 review</div>
-              </div>
-            </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">a week ago</div>
-            </div>
-          </div>
-          <p class="lp-review-text">Nathan provided great service for a BBQ gas connection in my backyard. Professionally installed, super quick, neat and fitted to house properly. Also diagnosed my heater for the pool and was able to restore service after a short period of troubleshooting. Fully recommend.</p>
-        </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#0f9d58;">G</div>
-              <div>
-                <div class="lp-reviewer-name">Gordon Esnard</div>
-                <div class="lp-reviewer-meta">2 reviews</div>
-              </div>
+              <div><div class="lp-reviewer-name">Gordon Esnard</div><div class="lp-reviewer-meta">2 reviews</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">2 months ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">2 months ago</div></div>
           </div>
-          <p class="lp-review-text">After waking up to a cold house, I called ComfortRama. Within 1 hour Nathan arrived and got the furnace running temporarily, then left to get a replacement part and returned roughly 1 hour later. I call this exceptional service. Once again I live in comfort thanks to ComfortRama.</p>
+          <p class="lp-review-text">After waking up to a cold house I called ComfortRama. Within 1 hour Nathan arrived, got the furnace running temporarily, then returned with the replacement part. I call this exceptional service.</p>
         </div>
-
+        <div class="lp-review-card">
+          <div class="lp-review-top">
+            <div class="lp-reviewer">
+              <div class="lp-avatar" style="background:#34a853;">B</div>
+              <div><div class="lp-reviewer-name">Bruce Carruthers</div><div class="lp-reviewer-meta">1 review</div></div>
+            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">a week ago</div></div>
+          </div>
+          <p class="lp-review-text">Nathan provided great service for a BBQ gas connection. Professionally installed, super quick and neat. Also diagnosed my pool heater and restored service quickly. Fully recommend.</p>
+        </div>
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#e8500a;">E</div>
-              <div>
-                <div class="lp-reviewer-name">Emma Ryu</div>
-                <div class="lp-reviewer-meta">5 reviews</div>
-              </div>
+              <div><div class="lp-reviewer-name">Emma Ryu</div><div class="lp-reviewer-meta">5 reviews</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">2 months ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">2 months ago</div></div>
           </div>
           <p class="lp-review-text">Nathan has been the first person for any HVAC issues of my properties. I've known him for 10 years, very reliable and prompt service. Highly recommend!!!</p>
         </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
-              <div class="lp-avatar" style="background:#fbbc05; color:#333;">B</div>
-              <div>
-                <div class="lp-reviewer-name">branson m</div>
-                <div class="lp-reviewer-meta">Local Guide · 13 reviews</div>
-              </div>
+              <div class="lp-avatar" style="background:#fbbc05;color:#333;">B</div>
+              <div><div class="lp-reviewer-name">branson m</div><div class="lp-reviewer-meta">Local Guide · 13 reviews</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">2 weeks ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">2 weeks ago</div></div>
           </div>
-          <p class="lp-review-text">Nathan was prompt, on time and professional. He did a great job on a BBQ hookup, price was bang on as well. Highly recommend.</p>
+          <p class="lp-review-text">Nathan was prompt, on time and professional. Great job, price was bang on. Highly recommend.</p>
         </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#1a73e8;">L</div>
-              <div>
-                <div class="lp-reviewer-name">Lilian Richards</div>
-                <div class="lp-reviewer-meta">1 review</div>
-              </div>
+              <div><div class="lp-reviewer-name">Lilian Richards</div><div class="lp-reviewer-meta">1 review</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">a month ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">a month ago</div></div>
           </div>
-          <p class="lp-review-text">Pascal is pleased with Nathan's work. He did a great job installing and programming our new thermostat to our needs. He is also very pleasant to communicate with.</p>
+          <p class="lp-review-text">Pascal is pleased with Nathan's work. Great job installing and programming our new thermostat. Very pleasant to communicate with.</p>
         </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#ea4335;">S</div>
-              <div>
-                <div class="lp-reviewer-name">Silas Tang</div>
-                <div class="lp-reviewer-meta">1 review · 1 photo</div>
-              </div>
+              <div><div class="lp-reviewer-name">Silas Tang</div><div class="lp-reviewer-meta">1 review · 1 photo</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">2 months ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">2 months ago</div></div>
           </div>
-          <p class="lp-review-text">Highly recommend CR. I called Nathan and he responded to my request immediately in a timely manner. He checked and cleaned everything. Excellent service. Price is reasonable.</p>
+          <p class="lp-review-text">Highly recommend CR. Nathan responded immediately, checked and cleaned everything. Excellent service. Price is reasonable.</p>
         </div>
-
         <div class="lp-review-card">
           <div class="lp-review-top">
             <div class="lp-reviewer">
               <div class="lp-avatar" style="background:#00acc1;">Y</div>
-              <div>
-                <div class="lp-reviewer-name">Yash Trivedi</div>
-                <div class="lp-reviewer-meta">1 review</div>
-              </div>
+              <div><div class="lp-reviewer-name">Yash Trivedi</div><div class="lp-reviewer-meta">1 review</div></div>
             </div>
-            <div>
-              <div class="lp-review-stars">★★★★★</div>
-              <div class="lp-review-date">4 months ago</div>
-            </div>
+            <div style="text-align:right;"><div class="lp-review-stars">★★★★★</div><div class="lp-review-date">4 months ago</div></div>
           </div>
           <p class="lp-review-text">Fixed my heater fast and professionally. Good price.</p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
   <div class="lp-offer-band">
     <div class="lp-container">
       <h2>Don't Wait — Book Your $50 Off Visit Today</h2>
@@ -828,16 +705,21 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="lp-footer">
     <div class="lp-container">
       <img src="assets/images/613_-_422_-_2939.png" alt="Comfortrama" class="lp-footer-logo"><br>
       Licensed G2 Gas Technician · Fully Insured · TSSA Compliant · Ottawa, Ontario<br>
       <a href="tel:6134222939">(613) 422-2939</a> · <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a><br><br>
-      © 2026 Comfortrama Heating & Cooling. All Rights Reserved.<br>
+      © 2026 Comfortrama Heating & Cooling. All Rights Reserved. &nbsp;·&nbsp;
       <a href="index.html">← Back to Main Website</a>
     </div>
   </footer>
+
+  <!-- Mobile Sticky CTA Bar (shows only on mobile) -->
+  <div class="lp-mobile-cta">
+    <a href="tel:6134222939" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="#claim-offer" class="cta-form"><i class="fas fa-tag"></i> Claim $50 Off</a>
+  </div>
 
 </body>
 </html>
