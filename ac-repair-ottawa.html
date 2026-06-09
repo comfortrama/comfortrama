@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) event -->
-<script>
-  gtag('event', 'conversion_event_contact', {
-    // <event_parameters>
-  });
-</script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AC Repair Ottawa – $50 Off Diagnostic & Maintenance | Comfortrama (613) 422-2939</title>
@@ -262,7 +255,7 @@
       transition: border-color .2s;
       outline: none;
       width: 100%;
-      font-size: 16px; /* prevents iOS zoom */
+      font-size: 16px;
     }
     .hf-group input:focus, .hf-group select:focus, .hf-group textarea:focus {
       border-color: #e8500a;
@@ -431,21 +424,23 @@
       .lp-why-grid { grid-template-columns: 1fr; }
     }
   </style>
-</head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17993415445"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'AW-17993415445');
-</script>
+  <!-- Google Ads tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17993415445"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-17993415445');
+  </script>
+
+</head>
 
 <body>
 
   <div class="lp-topbar">
     Licensed G2 Technician &nbsp;·&nbsp; Same-Day Service &nbsp;·&nbsp;
-    <a href="tel:6134222939">(613) 422-2939</a>
+    <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');">(613) 422-2939</a>
   </div>
 
   <nav class="lp-nav">
@@ -458,7 +453,7 @@
         </div>
       </a>
       <div class="lp-nav-right">
-        <a href="tel:6134222939" class="lp-nav-phone"><i class="fas fa-phone"></i> (613) 422-2939</a>
+        <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');" class="lp-nav-phone"><i class="fas fa-phone"></i> (613) 422-2939</a>
         <a href="#claim-offer" class="lp-nav-btn"><i class="fas fa-tag"></i> Claim $50 Off</a>
       </div>
     </div>
@@ -472,7 +467,7 @@
           <h1>IS YOUR AC<br><span>NOT COOLING?</span><br>WE FIX IT FAST.</h1>
           <p class="lp-hero-sub"></p>
           <div class="lp-hero-btns">
-            <a href="tel:6134222939" class="lp-btn-primary"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
+            <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');" class="lp-btn-primary"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
             <a href="#claim-offer" class="lp-btn-outline"><i class="fas fa-tag"></i> Claim $50 Off</a>
           </div>
           <div class="lp-trust">
@@ -538,7 +533,7 @@
               <textarea name="message" placeholder="Any extra details help us prepare..." rows="2"></textarea>
             </div>
             <button type="submit" class="hf-submit"><i class="fas fa-tag"></i> CLAIM $50 OFF — BOOK NOW</button>
-            <p class="hf-disclaimer">Or call: <a href="tel:6134222939">(613) 422-2939</a> · We respond within 1 hour</p>
+            <p class="hf-disclaimer">Or call: <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');">(613) 422-2939</a> · We respond within 1 hour</p>
           </form>
         </div>
       </div>
@@ -549,7 +544,7 @@
     <div class="lp-container">
       <h2>$50 Off Your AC Diagnostic or Maintenance</h2>
       <p>Same-day appointments across Ottawa, Kanata, Barrhaven, Orléans & Nepean.</p>
-      <a href="tel:6134222939" class="lp-btn-white"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
+      <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');" class="lp-btn-white"><i class="fas fa-phone"></i> Call (613) 422-2939</a>
     </div>
   </div>
 
@@ -708,7 +703,7 @@
     <div class="lp-container">
       <h2>Don't Wait — Book Your $50 Off Visit Today</h2>
       <p>Same-day AC repair across Ottawa. Call now or fill out the form above.</p>
-      <a href="tel:6134222939" class="lp-btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
+      <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');" class="lp-btn-white"><i class="fas fa-phone"></i> (613) 422-2939</a>
     </div>
   </div>
 
@@ -716,7 +711,7 @@
     <div class="lp-container">
       <img src="assets/images/613_-_422_-_2939.png" alt="Comfortrama" class="lp-footer-logo"><br>
       Licensed G2 Gas Technician · Fully Insured · TSSA Compliant · Ottawa, Ontario<br>
-      <a href="tel:6134222939">(613) 422-2939</a> · <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a><br><br>
+      <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');">(613) 422-2939</a> · <a href="mailto:comfortrama@gmail.com">comfortrama@gmail.com</a><br><br>
       © 2026 Comfortrama Heating & Cooling. All Rights Reserved. &nbsp;·&nbsp;
       <a href="index.html">← Back to Main Website</a>
     </div>
@@ -724,9 +719,38 @@
 
   <!-- Mobile Sticky CTA Bar (shows only on mobile) -->
   <div class="lp-mobile-cta">
-    <a href="tel:6134222939" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="tel:6134222939" onclick="return gtag_report_conversion('tel:6134222939');" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
     <a href="#claim-offer" class="cta-form"><i class="fas fa-tag"></i> Claim $50 Off</a>
   </div>
+
+  <!-- Google Ads Conversion Tracking -->
+
+  <!-- Click to call conversion -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) !== 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17993415445/VrMbCLeijrwcEJX29oND',
+        'value': 1.0,
+        'currency': 'CAD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+
+  <!-- Form submit conversion — fires on form submit -->
+  <script>
+    document.getElementById('heroForm').addEventListener('submit', function() {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17993415445/VrMbCLeijrwcEJX29oND'
+      });
+    });
+  </script>
 
 </body>
 </html>
